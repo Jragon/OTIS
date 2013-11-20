@@ -1,0 +1,22 @@
+<h2><%= @regional_office.name %></h2>
+
+<h5>National Offices under <%= @regional_office.name %></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>No. Programmes</th>
+      <th>Top Change</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @regional_office.national_offices.each do |national_office| %>
+      <tr>
+        <td><%= link_to national_office.name, national_office %></td>
+        <td><%= national_office.programmes.count %></td>
+        <td>N/A</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

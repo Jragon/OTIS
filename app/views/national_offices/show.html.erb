@@ -1,0 +1,22 @@
+<h2><%= @national_office.name %></h2>
+
+<h5>Programmes under <%= @national_office.name %></h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>No. Villages</th>
+      <th>Top Change</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @national_office.programmes.each do |programme| %>
+      <tr>
+        <td><%= link_to programme.name, programme %></td>
+        <td><%#= programme.villages.count %>N/A</td>
+        <td>N/A</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

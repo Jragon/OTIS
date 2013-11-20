@@ -1,0 +1,21 @@
+<h1>Regional Offices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>No. National Offices</th>
+      <th>Top Change</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @regional_offices.each do |regional_office| %>
+      <tr>
+        <td><%= link_to regional_office.name, regional_office_path(regional_office) %></th>
+        <td><%= regional_office.national_offices.count %></th>
+        <td>N/A</th>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

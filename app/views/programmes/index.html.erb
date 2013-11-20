@@ -1,0 +1,21 @@
+<h1>Programmes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>No. Villages</th>
+      <th>Top Change</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programmes.each do |programme| %>
+      <tr>
+        <td><%= link_to programme.name, programme %></td>
+        <td><%#= programme.villages.count %>N/A</td>
+        <td>N/A</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
