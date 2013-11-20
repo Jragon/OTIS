@@ -1,0 +1,20 @@
+<h5>National Offices</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>No. Programmes</th>
+      <th>Top Change</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @national_offices.each do |national_office| %>
+      <tr>
+        <td><%= link_to national_office.name, national_office %></td>
+        <td><%= national_office.programmes.count %></td>
+        <td>N/A</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
