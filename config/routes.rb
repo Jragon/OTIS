@@ -3,7 +3,9 @@ OTIS::Application.routes.draw do
 
   resources :programmes
 
-  resources :national_offices
+  resources :national_offices do
+    resources :programmes
+  end
 
   resources :regional_offices
 

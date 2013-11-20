@@ -5,6 +5,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Number</th>
       <th>No. Villages</th>
       <th>Top Change</th>
     </tr>
@@ -14,6 +15,7 @@
     <% @national_office.programmes.each do |programme| %>
       <tr>
         <td><%= link_to programme.name, programme %></td>
+        <td><%= programme.number %></td>
         <td><%#= programme.villages.count %>N/A</td>
         <td>N/A</td>
       </tr>

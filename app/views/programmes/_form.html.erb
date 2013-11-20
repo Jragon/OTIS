@@ -1,0 +1,31 @@
+<%= simple_form_for resource do |f| %>
+  <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resource.errors.count, "error") %>:</h2>
+
+      <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.input :name, input_html: { maxlength: 20 } %>
+  </div>
+  <div class="field">
+    <%= f.input :number, input_html: { maxlength: 20 } %>
+  </div>
+  <div class="field">
+    <% if @national_office %>
+      <%= f.input :national_office_id, as: :hidden, input_html: { value: @national_office.id } %>
+    <% else %>
+      <%= f.association :national_office, prompt: "Choose a National Office" %>
+    <% end %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+  </div>
+<% end %>
