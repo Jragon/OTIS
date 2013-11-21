@@ -1,4 +1,6 @@
 OTIS::Application.routes.draw do
+  resources :groups
+
   resources :changes
 
   resources :villages
