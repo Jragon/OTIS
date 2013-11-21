@@ -1,10 +1,16 @@
 OTIS::Application.routes.draw do
+  resources :changes
+
   resources :villages
 
-  resources :programmes
+  resources :programmes do
+    resources :villages
+  end
 
   resources :national_offices do
-    resources :programmes
+    resources :programmes do 
+      resources :villages
+    end
   end
 
   resources :regional_offices

@@ -1,0 +1,23 @@
+<h1><%= @village.name %></h1>
+
+<h5>Discussions under <%= @village.name %></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>No. Discussions</th>
+      <th>Top Change</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%# @village.discussions.each do |discussion| %>
+      <tr>
+        <td><%#= link_to discussion.name, discussion %></td>
+        <td><%#= discussion.discusions.count %>N/A</td>
+        <td>N/A</td>
+      </tr>
+    <%# end %>
+  </tbody>
+</table>

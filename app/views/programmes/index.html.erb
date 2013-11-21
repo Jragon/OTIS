@@ -1,4 +1,4 @@
-<h1>Programmes</h1>
+<h1>Programmes <%= @national_office ? "for " + @national_office.name : "" %></h1>
 
 <table>
   <thead>
@@ -12,8 +12,8 @@
   <tbody>
     <% @programmes.each do |programme| %>
       <tr>
-        <td><%= link_to programme.name, national_office_programme_path(programme, @natinal_office) %></td>
-        <td><%#= programme.villages.count %>N/A</td>
+        <td><%= link_to programme.name, national_office_programme_path(programme.national_office, programme) %></td>
+        <td><%= programme.villages.count %>N/A</td>
         <td>N/A</td>
       </tr>
     <% end %>

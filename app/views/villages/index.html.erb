@@ -1,6 +1,4 @@
-<h2><%= @programme.name %></h2>
-
-<h5>Villages under <%= @programme.name %></h3>
+<h1>Villages</h1>
 
 <table>
   <thead>
@@ -12,7 +10,7 @@
   </thead>
 
   <tbody>
-    <% @programme.villages.each do |village| %>
+    <% @villages.each do |village| %>
       <tr>
         <td><%= link_to village.name, village %></td>
         <td><%#= village.discusions.count %>N/A</td>
@@ -21,5 +19,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'New Village', new_programme_village_path(@programme) %>

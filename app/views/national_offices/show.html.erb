@@ -16,9 +16,11 @@
       <tr>
         <td><%= link_to programme.name, programme %></td>
         <td><%= programme.number %></td>
-        <td><%#= programme.villages.count %>N/A</td>
+        <td><%= programme.villages.count %>N/A</td>
         <td>N/A</td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "New Programme", new_national_office_programme_path(@national_office) %>
