@@ -13,8 +13,8 @@
     <% @villages.each do |village| %>
       <tr>
         <td><%= link_to village.name, village %></td>
-        <td><%#= village.discusions.count %>N/A</td>
-        <td>N/A</td>
+        <td><%= village.discussions.count %></td>
+        <td><%= village.top_change.inspect %></td>
       </tr>
     <% end %>
   </tbody>

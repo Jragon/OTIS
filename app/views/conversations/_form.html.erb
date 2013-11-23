@@ -1,0 +1,33 @@
+<%= simple_form_for [@discussion, @conversation] do |f| %>
+  <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resource.errors.count, "error") %>:</h2>
+
+      <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+
+  <%= f.input :discussion_id, as: :hidden, input_html: { value: @discussion.id } %>
+  <div class="field">
+    <%= f.association :change, prompt: "Choose a Change" %>
+  </div>
+  <div class="field">
+    <%= f.input :rank, input_html: { min: 1, max: 10 } %>
+  </div>
+  <div class="field">
+    <%= f.input :ten_seed, collection: 10.downto(1), selected: 0 %>
+  </div>
+  <div class="field">
+    <%= f.input :observations, as: :text %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+  </div>
+<% end %>

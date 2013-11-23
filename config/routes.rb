@@ -1,21 +1,36 @@
 OTIS::Application.routes.draw do
-  resources :groups
+  
+
+  resources :discussions do 
+    resources :changes, only: [:index]
+    resources :conversations
+  end
+
+  resources :groups do
+    resources :changes, only: [:index]
+  end
 
   resources :changes
 
-  resources :villages
+  resources :villages do
+    resources :discussions
+  end
 
   resources :programmes do
+    resources :changes, only: [:index]
     resources :villages
   end
 
   resources :national_offices do
+    resources :changes, only: [:index]
     resources :programmes do 
       resources :villages
     end
   end
 
-  resources :regional_offices
+  resources :regional_offices do
+    resources :changes, only: [:index]
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

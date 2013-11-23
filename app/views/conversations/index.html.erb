@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Change</th>
+      <th>Ten Seed</th>
+      <th>Observations</th>
+      <th>No. Fruit</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @conversations.order(:rank).each do |conversation| %>
+      <tr>
+        <td><%= conversation.rank %></td>
+        <td><%= link_to conversation.change.name, discussion_conversation_path(@discussion, conversation) %>
+        </td>
+        <td><%= conversation.ten_seed %></td>
+        <td><%= truncate_observations conversation.observations %></td>
+        <td><%#= conversation.fruit.count %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

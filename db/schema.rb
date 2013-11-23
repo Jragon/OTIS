@@ -11,10 +11,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131121165345) do
+ActiveRecord::Schema.define(version: 20131121184504) do
 
   create_table "changes", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "conversations", force: true do |t|
+    t.integer  "discussion_id"
+    t.integer  "change_id"
+    t.integer  "rank"
+    t.integer  "ten_seed"
+    t.string   "observations"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "discussions", force: true do |t|
+    t.string   "lead_facilitator"
+    t.integer  "duration"
+    t.datetime "date_held"
+    t.integer  "group_id"
+    t.integer  "village_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

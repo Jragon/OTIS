@@ -2,7 +2,8 @@ require 'spec_helper'
 
 describe Village do
   describe 'Associations' do
-    it {should belong_to :programme }
+    it { should belong_to :programme }
+    it { should have_many :discussions }
   end
 
   describe 'Validations' do

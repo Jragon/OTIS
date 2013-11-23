@@ -1,0 +1,38 @@
+<%= simple_form_for resource do |f| %>
+  <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resource.errors.count, "error") %>:</h2>
+
+      <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  
+  <% if @village %>
+    <%= f.input :village_id, as: :hidden, input_html: { value: @village.id } %>
+  <% else %>
+    <div class="field">
+      <%= f.association :village, prompt: "Choose a Village" %>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.association :group, prompt: "Choose a Group" %>
+  </div>
+  <div class="field">
+    <%= f.input :lead_facilitator, input_html: { maxlength: 20 } %>
+  </div>
+  <div class="field">
+    <%= f.input :duration, collection: (30..180).step(30).map {|n| "#{n} minutes" }, selected: 0 %>
+  </div>
+  <div class="field">
+    <%= f.input :date_held, as: :date %>
+  </div>
+  <div class="actions">
+    <%= f.button :submit %>
+  </div>
+  </div>
+<% end %>

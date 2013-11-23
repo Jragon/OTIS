@@ -1,6 +1,4 @@
-<h1><%= @village.name %></h1>
-
-<h5>Discussions under <%= @village.name %></h3>
+<h1>All Discussions</h1>
 
 <table>
   <thead>
@@ -9,20 +7,20 @@
       <th>Lead Facilitator</th>
       <th>Duration</th>
       <th>Date Held</th>
-      <th>No. Changes</th>
+      <th>No. Conversations</th>
       <th>Top Change</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @village.discussions.each do |discussion| %>
+    <% @discussions.each do |discussion| %>
       <tr>
         <td><%= link_to discussion.group.name, discussion %></td>
         <td><%= discussion.lead_facilitator %></td>
         <td><%= discussion.duration %> Minutes</td>
         <td><%= discussion.date_held.strftime("%m-%d-%Y") %></td>
         <td><%= discussion.conversations.count %></td>
-        <td><%= top_change discussion %></td>
+        <td>N/A</td>
       </tr>
     <% end %>
   </tbody>

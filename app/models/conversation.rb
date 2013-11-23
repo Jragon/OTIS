@@ -4,5 +4,5 @@ class Conversation < ActiveRecord::Base
   # has_many :fruit
 
   validates :discussion_id, :change_id, :rank, :ten_seed, presence: true
-  validates :change_id, :rank, uniqueness: { scope: :dicussion_id } 
+  validates :change_id, :rank, uniqueness: { scope: :discussion_id } 
 end

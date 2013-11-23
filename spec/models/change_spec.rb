@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Change do
   describe 'Associations' do
-    # it { should have_many :discussions }
+    it { should have_many :conversations }
   end
 
   describe 'Validations' do
