@@ -1,5 +1,5 @@
 class ConversationsController < InheritedResources::Base
-  before_action :set_village
+  before_action :set_discussion
 
   def create
     create! do |success, failure|
@@ -15,10 +15,15 @@ class ConversationsController < InheritedResources::Base
       else
         @conversations = Conversation.all
       end
-    end  
+    end
+
+    def resource
+      @last_rank = 0
+      super
+    end
 
   private
-    def set_village
+    def set_discussion
       if params[:discussion_id]
         @discussion = Discussion.find(params[:discussion_id])
       end
