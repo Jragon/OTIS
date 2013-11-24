@@ -3,6 +3,8 @@ require 'spec_helper'
 describe Fruit do
   describe 'Associations' do
     it { should belong_to :conversation }
+    it { should have_many :threats }
+    it { should have_many :contributors }
   end
 
   describe 'Validations' do
