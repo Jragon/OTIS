@@ -11,10 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124133814) do
+ActiveRecord::Schema.define(version: 20131124135922) do
 
   create_table "changes", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "contributors", force: true do |t|
+    t.string   "name"
+    t.string   "rank"
+    t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72,6 +80,14 @@ ActiveRecord::Schema.define(version: 20131124133814) do
 
   create_table "regional_offices", force: true do |t|
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "threats", force: true do |t|
+    t.string   "name"
+    t.string   "rank"
+    t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
