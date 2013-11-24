@@ -19,8 +19,8 @@
     <% @programme.villages.each do |village| %>
       <tr>
         <td><%= link_to village.name, village %></td>
-        <td><%#= village.discusions.count %>N/A</td>
-        <td>N/A</td>
+        <td><%= village.discussions.count %></td>
+        <td><%= village.top_change.try(:name) or "N/A" %></td>
       </tr>
     <% end %>
     <%= simple_form_for [@programme, @programme.villages.new] do |f| %>
