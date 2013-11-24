@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131124154014) do
+ActiveRecord::Schema.define(version: 20131124164756) do
 
   create_table "changes", force: true do |t|
     t.string   "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20131124154014) do
 
   create_table "contributors", force: true do |t|
     t.string   "name"
-    t.string   "rank"
+    t.integer  "rank",         limit: 255
     t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 20131124154014) do
 
   create_table "threats", force: true do |t|
     t.string   "name"
-    t.string   "rank"
+    t.integer  "rank",         limit: 255
     t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
