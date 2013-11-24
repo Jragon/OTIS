@@ -3,7 +3,7 @@ class ChangeDataTypeForRankInContributors < ActiveRecord::Migration
     connection.execute(%q{
       alter table contributors
       alter column rank
-      type integer using cast(number as integer)
+      type integer using cast(rank as integer)
     })
   end
 end
