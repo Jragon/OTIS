@@ -1,0 +1,2 @@
+class ThreatsController < ApplicationController
+end

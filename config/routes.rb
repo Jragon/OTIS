@@ -1,6 +1,12 @@
 OTIS::Application.routes.draw do
   
-  resources :fruits
+  resources :threats
+
+  resources :contributors
+
+  resources :conversations do
+    resources :fruits
+  end
 
   resources :discussions do 
     resources :changes, only: [:index]
