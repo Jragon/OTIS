@@ -22,7 +22,7 @@
     <%= simple_form_for [@programme, @programme.villages.new] do |f| %>
       <%= f.input :programme_id, as: :hidden, input_html: { value: @programme.id } %>
       <tr>
-        <td><%= f.input :name, input_html: { maxlength: 20 }, label: false %></td>
+        <td><%= f.input :name, input_html: { maxlength: 20 }, label: false, autofocus: true %></td>
         <td></td>
         <td><%= f.button :submit %></td>
       <tr>
