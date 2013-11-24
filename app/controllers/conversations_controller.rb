@@ -26,6 +26,8 @@ class ConversationsController < InheritedResources::Base
     def set_discussion
       if params[:discussion_id]
         @discussion = Discussion.find(params[:discussion_id])
+      else
+        @discussion = Conversation.find(params[:id]).discussion
       end
     end
 
