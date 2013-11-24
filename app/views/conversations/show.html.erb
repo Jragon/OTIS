@@ -1,3 +1,8 @@
+<header>
+  <%= link_to @discussion.village.programme.name, @discussion.village.programme %> / <%= link_to @discussion.village.name, @village %> / <%= link_to @discussion.group.name, @discussion %> / <%= link_to @conversation.change.name, discussion_conversation_path(@dicussion, @conversation) %>
+</header>
+<hr />
+
 <h1>Conversation of a discussion in <%= @discussion.village.name %> with <%= @discussion.group.name %> about "<%= @conversation.change.name %>"</h1>
 
 <table>
