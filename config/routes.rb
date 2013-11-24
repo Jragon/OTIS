@@ -1,11 +1,13 @@
 OTIS::Application.routes.draw do
   
   resources :threats
-
   resources :contributors
 
   resources :conversations do
-    resources :fruits
+    resources :fruits do
+      resources :threats
+      resources :contributors
+    end
   end
 
   resources :discussions do 

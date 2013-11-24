@@ -15,11 +15,11 @@
     <% @conversation.fruit.order(:rank).each do |fruit| %>
       <tr>
         <td><%= link_to @last_rank = fruit.rank, conversation_fruit_path(@conversation, fruit) %></td>
-        <td><%= fruit.name %></td>
+        <td><%= link_to fruit.name, conversation_fruit_path(@conversation, fruit) %></td>
         <td><%= fruit.ten_seed  %></td>
         <td><%= fruit.observations %></td>
-        <td><%#=  %>N/A</td>
-        <td><%#= conversation.fruit.count %>N/A</td>
+        <td><%= fruit.threats.count %></td>
+        <td><%= fruit.contributors.count %></td>
       </tr>
     <% end %>
     <%= simple_form_for [@conversation, @conversation.fruit.new], html: { class: 'form-inline' } do |f| %>
@@ -27,7 +27,7 @@
         <%= f.input :conversation_id, as: :hidden, input_html: { value: @conversation.id } %>
         <%= f.input :rank, as: :hidden, input_html: { value: @last_rank + 1 } %>
         <td><%= @last_rank + 1 %></td>
-        <td><%= f.input :name, label: false, input_html: { size: 15 } %></td>
+        <td><%= f.input :name, label: false, input_html: { size: 15 }, required: true %></td>
         <td><%= f.input :ten_seed, collection: 10.downto(1), selected: 0, label: false %></td>
         <td><%= f.input :observations, as: :text, label: false %></td>
         <td></td>

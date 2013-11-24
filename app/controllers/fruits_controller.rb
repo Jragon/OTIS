@@ -8,6 +8,12 @@ class FruitsController < InheritedResources::Base
     end
   end
 
+  protected
+    def resource
+      @last_rank = 0
+      super
+    end
+
   private
     def set_conversation
       if params[:conversation_id]

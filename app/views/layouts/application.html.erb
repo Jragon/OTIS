@@ -7,7 +7,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<% flash.each do |key, value| %>
+  <% if key == :errors %>
+    <% value.each do |error| %>
+      <%= content_tag(:div, error, class: "error") %>
+    <% end %>
+  <% else %>
+    <%= content_tag(:div, value, class: "flash #{key}") %>
+  <% end %>
+<% end %>
 <%= yield %>
 
 </body>

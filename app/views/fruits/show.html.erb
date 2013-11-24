@@ -1,0 +1,64 @@
+<h1>Fruit "<%= @fruit.name %>" of a discussion in <%= @conversation.discussion.village.name %> with <%= @conversation.discussion.group.name %> about "<%= @conversation.change.name %>"</h1>
+
+<h3>Contributors</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Observations</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @fruit.contributors.order(:rank).each do |contributor| %>
+      <tr>
+        <td><%= @last_rank = contributor.rank %></td>
+        <td><%= contributor.name %></td>
+        <td><%= contributor.observations %></td>
+      </tr>
+    <% end %>
+    <%= simple_form_for [@conversation, @fruit, @fruit.contributors.new], html: { class: 'form-inline' } do |f| %>
+      <tr>
+        <%= f.input :fruit_id, as: :hidden, input_html: { value: @fruit.id } %>
+        <%= f.input :rank, as: :hidden, input_html: { value: @last_rank + 1 } %>
+        <td><%= @last_rank + 1 %></td>
+        <td><%= f.input :name, label: false, input_html: { size: 15 } %></td>
+        <td><%= f.input :observations, as: :text, label: false %></td>
+        <td><%= f.button :submit %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% @last_rank = 0 %>
+<h3>Threats</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Observations</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @fruit.threats.order(:rank).each do |contributor| %>
+      <tr>
+        <td><%= @last_rank = contributor.rank %></td>
+        <td><%= contributor.name %></td>
+        <td><%= contributor.observations %></td>
+      </tr>
+    <% end %>
+    <%= simple_form_for [@conversation, @fruit, @fruit.threats.new], html: { class: 'form-inline' } do |f| %>
+      <tr>
+        <%= f.input :fruit_id, as: :hidden, input_html: { value: @fruit.id } %>
+        <%= f.input :rank, as: :hidden, input_html: { value: @last_rank + 1 } %>
+        <td><%= @last_rank + 1 %></td>
+        <td><%= f.input :name, label: false, input_html: { size: 15 } %></td>
+        <td><%= f.input :observations, as: :text, label: false %></td>
+        <td><%= f.button :submit %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
