@@ -19,7 +19,7 @@
         <td>N/A</td>
       </tr>
     <% end %>
-    <%= simple_form_for @programme.villages.new do |f| %>
+    <%= simple_form_for [@programme, @programme.villages.new] do |f| %>
       <%= f.input :programme_id, as: :hidden, input_html: { value: @programme.id } %>
       <tr>
         <td><%= f.input :name, input_html: { maxlength: 20 }, label: false %></td>
@@ -30,6 +30,6 @@
   </tbody>
 </table>
 
-<%= link_to 'New Village', new_programme_village_path(@programme) %>
+<%#= link_to 'New Village', new_programme_village_path(@programme) %>
 
 

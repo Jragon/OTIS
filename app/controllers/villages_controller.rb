@@ -1,6 +1,15 @@
 class VillagesController < InheritedResources::Base
   before_action :set_programme
 
+  def create
+    create! do |success, failure|
+      failure.html { redirect_to @programme, 
+                     flash: { errors: @contributor.errors.full_messages }
+                   }
+      success.html { redirect_to @programme }
+    end
+  end
+
   protected
     def collection
       if @programme
