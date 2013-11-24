@@ -1,5 +1,5 @@
 <header>
-  <%= link_to @discussion.village.programme.name, @discussion.village.programme %> / <%= link_to @discussion.village.name, @village %> / <%= link_to @discussion.group.name, @discussion %> / <%= link_to @conversation.change.name, discussion_conversation_path(@dicussion, @conversation) %>
+  <%= link_to @discussion.village.programme.name, @discussion.village.programme %> / <%= link_to @discussion.village.name,  programme_village_path(@discussion.village.programme, @discussion.village) %> / <%= link_to @discussion.group.name, @discussion %> / <%= link_to @conversation.change.name, discussion_conversation_path(@dicussion, @conversation) %>
 </header>
 <hr />
 
