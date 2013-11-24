@@ -7,6 +7,7 @@ describe Fruit do
 
   describe 'Validations' do
     it { should validate_presence_of :conversation_id }
+    it { should validate_presence_of :name }
     it { should validate_presence_of :rank }
     it { should validate_presence_of :ten_seed }
   end
