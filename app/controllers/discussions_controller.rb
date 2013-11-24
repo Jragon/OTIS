@@ -8,7 +8,12 @@ class DiscussionsController < InheritedResources::Base
       else
         @discussions = Discussion.all
       end
-    end  
+    end
+
+    def resource
+      @last_rank = 0
+      super
+    end
 
   private
     def set_village
@@ -18,6 +23,6 @@ class DiscussionsController < InheritedResources::Base
     end
 
     def permitted_params
-      params.permit(discussion: [:lead_facilitator, :duration, :date_held, :group_id, :village_id])
+      params.permit(discussion: [:lead_facilitator, :duration, :date_held, :group_name, :village_id])
     end
 end

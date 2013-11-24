@@ -13,7 +13,7 @@
       <tr>
         <td><%= link_to national_office.name, national_office %></td>
         <td><%= national_office.programmes.count %></td>
-        <td>N/A</td>
+        <td><%= national_office.top_change.respond_to?(:name) ? national_office.top_change.name : "N/A" %></td>
       </tr>
     <% end %>
   </tbody>

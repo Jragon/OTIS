@@ -22,8 +22,20 @@
         <td><%= discussion.duration %> Minutes</td>
         <td><%= discussion.date_held.strftime("%m-%d-%Y") %></td>
         <td><%= discussion.conversations.count %></td>
-        <td><%= top_change discussion %></td>
+        <td><%= discussion.top_change.respond_to?(:name) ? discussion.top_change.name : "N/A" %></td>
       </tr>
     <% end %>
+  <%= simple_form_for @village.discussions.new do |f| %>
+    <tr>
+      <%= f.input :village_id, as: :hidden, input_html: { value: @village.id } %>
+      <td><%= f.text_field :group_name, required: true, data: { autocomplete_source: Group.all.map(&:name) }, label: false %></td>
+      <td><%= f.input :lead_facilitator, input_html: { maxlength: 20 }, label: false %></td>
+      <td><%= f.input :duration, collection: (30..180).step(30).map {|n| "#{n} minutes" }, selected: 0, label: false %></td>
+      <td><%= f.input :date_held, as: :date, label: false %></td>
+      <td></td>
+      <td><%= f.button :submit %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
+

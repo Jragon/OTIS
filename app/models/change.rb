@@ -14,13 +14,13 @@ class Change < ActiveRecord::Base
   end
 
   def self.with_rank(load_conversation=true)
-    q = select("changes.*, SUM((11 - conversations.rank) / 10.00) as score").group("changes.id")
+    q = select("changes.*, ROUND((SUM(11 - conversations.rank) / 10.00), 1) as score").group("changes.id")
     q = q.joins(:conversations) if load_conversation
     return q
   end
 
   def self.with_ten_seed(load_conversation=true)
-    q = select("changes.*, AVG(conversations.ten_seed) as average_ten_seed").group("changes.id")
+    q = select("changes.*, ROUND(AVG(conversations.ten_seed), 1) as average_ten_seed").group("changes.id")
     q = q.joins(:conversations) if load_conversation
     return q
   end

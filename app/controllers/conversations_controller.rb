@@ -1,6 +1,13 @@
 class ConversationsController < InheritedResources::Base
   before_action :set_village
 
+  def create
+    create! do |success, failure|
+      failure.html { redirect_to @discussion }
+      success.html { redirect_to @discussion }
+    end
+  end
+
   protected
     def collection
       if @discussion
@@ -18,6 +25,6 @@ class ConversationsController < InheritedResources::Base
     end
 
     def permitted_params
-      params.permit(conversation: [:discussion_id, :change_id, :rank, :ten_seed, :observations])
+      params.permit(conversation: [:discussion_id, :change_name, :rank, :ten_seed, :observations])
     end
 end

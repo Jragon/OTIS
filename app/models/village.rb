@@ -7,6 +7,6 @@ class Village < ActiveRecord::Base
   validates :name, :programme_id, presence: true
   
   def top_change
-    changes.merge Change.top_ranked(false)
+    changes.merge(Change.top(false)).take
   end
 end

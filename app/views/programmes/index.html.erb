@@ -13,8 +13,8 @@
     <% @programmes.each do |programme| %>
       <tr>
         <td><%= link_to programme.name, national_office_programme_path(programme.national_office, programme) %></td>
-        <td><%= programme.villages.count %>N/A</td>
-        <td>N/A</td>
+        <td><%= programme.villages.count %></td>
+        <td><%= programme.top_change.respond_to?(:name) ? programme.top_change.name : "N/A" %></td>
       </tr>
     <% end %>
   </tbody>

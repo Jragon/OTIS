@@ -10,17 +10,39 @@
       <th>No. Fruit</th>
     </tr>
   </thead>
-
+<% @last_rank = 0 %>
   <tbody>
     <% @discussion.conversations.order(:rank).each do |conversation| %>
       <tr>
-        <td><%= conversation.rank %></td>
-        <td><%= link_to conversation.change.name, discussion_conversation_path(@discussion, conversation) %>
-        </td>
+        <td><%= @last_rank = conversation.rank %></td>
+        <td><%= link_to conversation.change.name, discussion_conversation_path(@discussion, conversation) %></td>
         <td><%= conversation.ten_seed %></td>
         <td><%= truncate_observations conversation.observations %></td>
         <td><%#= conversation.fruit.count %></td>
       </tr>
+      <%# last_rank = conversation.rank %>
+    <% end %>
+    <%= simple_form_for [@discussion, @discussion.conversations.new], html: { class: 'form-inline' } do |f| %>
+      <tr>
+        <%= f.input :discussion_id, as: :hidden, input_html: { value: @discussion.id } %>
+        <%= f.input :rank, as: :hidden, input_html: { value: @last_rank + 1 } %>
+        <td><%= @last_rank + 1 %></td>
+        <td><%= f.text_field :change_name, required: true, data: { autocomplete_source: Change.top.map(&:name) } %></td>
+        <td><%= f.input :ten_seed, collection: 10.downto(1), selected: 0, label: false %></td>
+        <td><%= f.input :observations, as: :text, label: false %></td>
+        <td><%= f.button :submit %></td>
+      </tr>
     <% end %>
   </tbody>
 </table>
+  <% if resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(resource.errors.count, "error") %>:</h2>
+
+      <ul>
+      <% resource.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>

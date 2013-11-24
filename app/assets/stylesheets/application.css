@@ -10,6 +10,7 @@
  *
  *= require_self
  *= require_tree .
+ *= require jquery.ui.all
  */
 table
 {
@@ -39,3 +40,4 @@ table tbody tr:hover td
 {
   color: #009;
 }
+
