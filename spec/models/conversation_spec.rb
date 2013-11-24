@@ -4,7 +4,7 @@ describe Conversation do
   describe 'Associations' do
     it { should belong_to :discussion }
     it { should belong_to :change }
-    # it { should have_many :fruit }
+    it { should have_many :fruit }
   end
 
   describe 'Validations' do
