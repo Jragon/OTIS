@@ -3,8 +3,17 @@ class ContributorsController < InheritedResources::Base
 
   def create
     create! do |success, failure|
-      failure.html { redirect_to conversation_fruit_path(Conversation.find(params[:conversation_id]), Fruit.find(params[:fruit_id])), flash: { errors: @contributor.errors.full_messages } }
-      success.html { redirect_to conversation_fruit_path(Conversation.find(params[:conversation_id]), Fruit.find(params[:fruit_id])) }
+      failure.html { redirect_to conversation_fruit_path(
+                        Conversation.find(params[:conversation_id]),
+                        Fruit.find(params[:fruit_id])
+                      ), 
+                      flash: { errors: @contributor.errors.full_messages } 
+                    }
+      success.html { redirect_to conversation_fruit_path(
+                        Conversation.find(params[:conversation_id]), 
+                        Fruit.find(params[:fruit_id])
+                      ) 
+                    }
     end
   end
 

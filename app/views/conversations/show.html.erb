@@ -14,6 +14,7 @@
       <th>Observations</th>
       <th>No. Threats</th>
       <th>No. Contributers</th>
+      <td></td>
     </tr>
   </thead>
   <tbody>
@@ -25,6 +26,7 @@
         <td><%= fruit.observations %></td>
         <td><%= fruit.threats.count %></td>
         <td><%= fruit.contributors.count %></td>
+        <td><%= link_to "Delete", conversation_fruit_path(@conversation, fruit), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       </tr>
     <% end %>
     <%= simple_form_for [@conversation, @conversation.fruit.new], html: { class: 'form-inline' } do |f| %>

@@ -12,6 +12,7 @@
       <th>Name</th>
       <th>No. Discussions</th>
       <th>Top Change</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -21,6 +22,7 @@
         <td><%= link_to village.name, village %></td>
         <td><%= village.discussions.count %></td>
         <td><%= village.top_change.try(:name) or "N/A" %></td>
+
       </tr>
     <% end %>
     <%= simple_form_for [@programme, @programme.villages.new] do |f| %>
@@ -31,6 +33,7 @@
         <td><%= f.button :submit %></td>
       <tr>
     <% end %>
+
   </tbody>
 </table>
 

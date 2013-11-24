@@ -8,6 +8,10 @@ class FruitsController < InheritedResources::Base
     end
   end
 
+  def destroy
+    destroy! { @conversation }
+  end
+
   protected
     def resource
       @last_rank = 0
