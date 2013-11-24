@@ -1,5 +1,7 @@
 OTIS::Application.routes.draw do
   
+  resources :fruits
+
   resources :discussions do 
     resources :changes, only: [:index]
     resources :conversations
