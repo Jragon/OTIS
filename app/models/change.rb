@@ -16,7 +16,7 @@ class Change < ActiveRecord::Base
   end
 
   def self.with_rank(load_conversation=true)
-    q = select("changes.*, ROUND((SUM(11 - conversations.rank) / 10.00), 1) as score").group("changes.id")
+    q = select("changes.*, ROUND((AVG(11 - conversations.rank) + COUNT(conversations.id)), 1) as score").group("changes.id")
     q = q.joins(:conversations) if load_conversation
     return q
   end

@@ -11,34 +11,35 @@ OTIS::Application.routes.draw do
   end
 
   resources :discussions do 
-    resources :changes, only: [:index]
+    get 'changes', on: :member
     resources :conversations
   end
 
   resources :groups do
-    resources :changes, only: [:index]
+    get 'changes', on: :member
   end
 
   resources :changes
 
   resources :villages do
+    get 'changes', on: :member
     resources :discussions
   end
 
   resources :programmes do
-    resources :changes, only: [:index]
+    get 'changes', on: :member
     resources :villages
   end
 
   resources :national_offices do
-    resources :changes, only: [:index]
+    get 'changes', on: :member
     resources :programmes do 
       resources :villages
     end
   end
 
   resources :regional_offices do
-    resources :changes, only: [:index]
+    get 'changes', on: :member
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

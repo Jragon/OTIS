@@ -10,6 +10,12 @@ class VillagesController < InheritedResources::Base
     end
   end
 
+  def changes
+    @changes = Village.find(params[:id]).changes_with_score
+
+    render 'changes/index'
+  end
+
   protected
     def collection
       if @programme

@@ -1,6 +1,12 @@
 class ProgrammesController < InheritedResources::Base
   before_action :set_national_office
 
+  def changes
+    @changes = Programme.find(params[:id]).changes_with_score
+
+    render 'changes/index'
+  end
+
   protected
     def collection
       if @national_office

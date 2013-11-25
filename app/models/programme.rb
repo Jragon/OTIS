@@ -11,4 +11,8 @@ class Programme < ActiveRecord::Base
   def top_change
     changes.merge(Change.top(false)).take
   end
+
+  def changes_with_score
+    changes.merge Change.with_ten_seed.top
+  end
 end

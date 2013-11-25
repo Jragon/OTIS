@@ -1,8 +1,9 @@
 class RegionalOfficesController < InheritedResources::Base
   actions :index, :show
 
-  # def index
-  #   # index!
-  #   # @national_offices = @regional_offices.national_offices
-  # end
+  def changes
+    @changes = RegionalOffice.find(params[:id]).changes_with_score
+
+    render 'changes/index'
+  end
 end
