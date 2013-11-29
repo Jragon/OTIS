@@ -6,6 +6,8 @@ class Conversation < ActiveRecord::Base
   validates :discussion_id, :change_id, :rank, :ten_seed, presence: true
   validates :change_id, :rank, uniqueness: { scope: :discussion_id } 
 
+  acts_as_list column: :rank, scope: :discussion
+
   def change_name
     change.try(:name)
   end

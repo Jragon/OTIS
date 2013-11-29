@@ -8,11 +8,13 @@ OTIS::Application.routes.draw do
       resources :threats
       resources :contributors
     end
-  end
+  end 
 
   resources :discussions do 
     get 'changes', on: :member
-    resources :conversations
+    resources :conversations do
+      post :sort, on: :collection
+    end
   end
 
   resources :groups do

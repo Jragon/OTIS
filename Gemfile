@@ -55,3 +55,5 @@ end
 gem 'simple_form'
 gem 'inherited_resources'
 gem 'rails_12factor', group: :production
+gem 'acts_as_list'
+gem 'best_in_place',  github: 'bernat/best_in_place'

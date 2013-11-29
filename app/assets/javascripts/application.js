@@ -11,7 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+// require jquery.purr
 //= require jquery.ui.autocomplete
+//= require jquery.ui.sortable
 //= require jquery_ujs
+//= require best_in_place
+//= require best_in_place.purr
 // require turbolinks
 //= require_tree .
