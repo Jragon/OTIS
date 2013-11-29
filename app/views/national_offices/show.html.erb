@@ -17,7 +17,7 @@
         <td><%= link_to programme.name, programme %></td>
         <td><%= programme.number %></td>
         <td><%= programme.villages.count %></td>
-        <td><%= programme.top_change.name %></td>
+        <td><%= programme.top_change.try(:name) %></td>
       </tr>
     <% end %>
   </tbody>
