@@ -5,6 +5,8 @@
 jQuery ->
   $('#conversation_change_name').autocomplete
     source: $('#conversation_change_name').data('autocomplete-source');
+  $('.conversation_change_name').autocomplete
+      source: $('#conversation_change_name').data('autocomplete-source');
   $('#conversations').sortable(
     handle: '.handle'
     axis: 'y'
