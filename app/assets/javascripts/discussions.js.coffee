@@ -3,10 +3,15 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
-  $('#conversation_change_name').autocomplete
-    source: $('#conversation_change_name').data('autocomplete-source');
+  $('.best_in_place').best_in_place()
+
   $('.conversation_change_name').autocomplete
+    source: $('#conversation_change_name').data('autocomplete-source');
+
+  $("span[data-autocomplete='true']").click ->
+    $('.conversation_change_name').autocomplete
       source: $('#conversation_change_name').data('autocomplete-source');
+
   $('#conversations').sortable(
     handle: '.handle'
     axis: 'y'
