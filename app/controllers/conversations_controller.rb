@@ -24,6 +24,10 @@ class ConversationsController < InheritedResources::Base
     respond_with_bip(@conversatoin)
   end
 
+  def destroy
+    destroy! { @discussion }
+  end
+
   protected
     def collection
       if @discussion
