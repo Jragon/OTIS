@@ -1,6 +1,6 @@
 class ConversationsController < InheritedResources::Base
   respond_to :json, only: :update
-  before_action :set_discussion
+  before_action :set_discussion, :set_last_rank
 
   def create
     create! do |success, failure|
@@ -18,15 +18,10 @@ class ConversationsController < InheritedResources::Base
   end
 
   def update
-    @conversatoin = Conversation.find params[:id]
-
-    respond_to do |format|
-      if @conversatoin.update_attributes(params[:conversatoin])
-        format.json { respond_with_bip(@conversatoin) }
-      else
-        format.json { respond_with_bip(@conversatoin) }
-      end
-    end
+    @conversatoin = Conversation.find(params[:id])
+    @conversatoin.update_attributes(params[:conversatoin])
+    
+    respond_with_bip(@conversatoin)
   end
 
   protected
@@ -45,6 +40,10 @@ class ConversationsController < InheritedResources::Base
       else
         @discussion = Conversation.find(params[:id]).discussion
       end
+    end
+
+    def set_last_rank
+      @last_rank = 0
     end
 
     def permitted_params
