@@ -1,4 +1,5 @@
 class FruitsController < InheritedResources::Base
+  respond_to :json, only: :update
   before_action :set_conversation
 
   def create
@@ -10,6 +11,26 @@ class FruitsController < InheritedResources::Base
 
   def destroy
     destroy! { @conversation }
+  end
+
+  def update
+    @fruit = Fruit.find(params[:id])
+
+    respond_to do |format|
+      if @fruit.update_attributes(params[:fruit].permit(:name))
+        format.json { respond_with_bip(@fruit) }
+      else
+        format.json { respond_with_bip(@fruit) }
+      end
+    end
+  end
+
+  def sort
+    params[:fruit].each_with_index do |id, index|
+      Fruit.where("conversation_id = ?", @conversation.id).update_all({rank: index+1}, {id: id})
+    end
+
+    render nothing: true
   end
 
   protected
@@ -26,6 +47,6 @@ class FruitsController < InheritedResources::Base
     end
 
     def permitted_params
-      params.permit(fruit: [:conversation_id, :name, :rank, :ten_seed, :observations])
+      params.permit(:id, fruit: [:conversation_id, :name, :rank, :ten_seed, :observations])
     end
 end
