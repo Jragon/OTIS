@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
   before_save { |group| group.name.capitalize! }
 
-  has_many :discussions, dependant: :destroy
+  has_many :discussions, dependent: :destroy
   has_many :conversations, through: :discussions
   has_many :changes, through: :conversations
 

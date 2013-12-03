@@ -2,7 +2,7 @@ class Village < ActiveRecord::Base
   before_save { |village| village.name.capitalize! }
 
   belongs_to :programme
-  has_many :discussions, dependant: :destroy
+  has_many :discussions, dependent: :destroy
   has_many :conversations, through: :discussions
   has_many :changes, through: :conversations
 
