@@ -1,7 +1,7 @@
 class Change < ActiveRecord::Base
   before_save { |change| change.name.capitalize! }
 
-  has_many :conversations
+  has_many :conversations, dependant: :destroy
    
   validates :name, presence: true, uniqueness: true
 

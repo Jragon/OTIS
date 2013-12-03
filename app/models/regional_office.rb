@@ -1,5 +1,5 @@
 class RegionalOffice < ActiveRecord::Base
-  has_many :national_offices
+  has_many :national_offices, dependant: :destroy
   has_many :changes, through: :national_offices
 
   validates :name, presence: true
