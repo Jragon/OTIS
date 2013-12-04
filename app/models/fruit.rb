@@ -1,12 +1,12 @@
 class Fruit < ActiveRecord::Base
-  acts_as_list
-
   belongs_to :conversation
   belongs_to :theme
   has_many :threats, dependent: :destroy
   has_many :contributors, dependent: :destroy
 
   validates :conversation_id, :name, :rank, :ten_seed, presence: true
+
+  acts_as_list column: :rank, scope: :conversation
 
   def theme_name
     theme.try(:name)
