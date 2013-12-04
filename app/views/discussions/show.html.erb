@@ -22,7 +22,7 @@
     <% @discussion.conversations.order(:rank).each do |conversation| %>
       <%= content_tag_for :tr, conversation do %>
         <td class="handle">[reorder]</td>
-        <td><%= link_to @last_rank = conversation.rank, discussion_conversation_path(@discussion, conversation) %></td>
+        <td class="rank"><%= link_to @last_rank = conversation.rank, discussion_conversation_path(@discussion, conversation) %></td>
         <td><%= best_in_place conversation, :change_name, type: :input, inner_class: 'conversation_change_name', data: { autocomplete: true } %></td>
         <td><%= best_in_place conversation, :ten_seed, type: :select, collection: 10.downto(1).map{|i| [i, i]} %></td>
         <td><%= best_in_place conversation, :observations, type: :textarea, nil: "Click to add" %></td>

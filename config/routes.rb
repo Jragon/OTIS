@@ -1,5 +1,7 @@
 OTIS::Application.routes.draw do
   
+  resources :themes
+
   resources :fruits do
     post :sort, on: :collection
     resources :threats

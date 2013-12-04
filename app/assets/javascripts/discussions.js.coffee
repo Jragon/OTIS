@@ -13,9 +13,9 @@ jQuery ->
       source: $('#conversation_change_name').data('autocomplete-source');
 
   $('#conversations').sortable(
+    refreshPositions: true
     handle: '.handle'
     axis: 'y'
     update: ->
       $.post($(this).data('update-url'), $(this).sortable('serialize'))
   );
-  $('.best_in_place').best_in_place()

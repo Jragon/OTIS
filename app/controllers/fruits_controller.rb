@@ -15,14 +15,9 @@ class FruitsController < InheritedResources::Base
 
   def update
     @fruit = Fruit.find(params[:id])
-
-    respond_to do |format|
-      if @fruit.update_attributes(params[:fruit].permit(:name))
-        format.json { respond_with_bip(@fruit) }
-      else
-        format.json { respond_with_bip(@fruit) }
-      end
-    end
+    @fruit.update_attributes(fruit_params)
+    
+    respond_with_bip(@fruit)
   end
 
   def sort
@@ -47,6 +42,10 @@ class FruitsController < InheritedResources::Base
     end
 
     def permitted_params
-      params.permit(:id, fruit: [:conversation_id, :name, :rank, :ten_seed, :observations])
+      params.permit(:id)
+    end
+
+    def fruit_params
+      params.require(:fruit).permit(:id, :conversation_id, :theme_name, :name, :rank, :ten_seed, :observations)
     end
 end

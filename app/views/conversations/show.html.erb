@@ -15,6 +15,7 @@
       <th>Observations</th>
       <th>No. Threats</th>
       <th>No. Contributers</th>
+      <th>Theme</th>
       <th></th> 
     </tr>
   </thead>
@@ -28,6 +29,7 @@
         <td><%= fruit.observations %></td>
         <td><%= fruit.threats.count %></td>
         <td><%= fruit.contributors.count %></td>
+        <td><%= best_in_place fruit, :theme_name, type: :input, inner_class: 'fruit_theme_name', data: { autocomplete_source: @conversation.themes.map(&:name) } %></td>
         <td><%= link_to "Delete", conversation_fruit_path(@conversation, fruit), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       <% end %>
     <% end %>
