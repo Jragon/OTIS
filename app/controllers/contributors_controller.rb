@@ -1,20 +1,20 @@
 class ContributorsController < InheritedResources::Base
-  actions :create
+  before_action :set_conversation
+  respond_to :json, only: :update
+  actions :create, :update
 
   def create
     create! do |success, failure|
-      failure.html { redirect_to conversation_fruit_path(
-                        Conversation.find(params[:conversation_id]),
-                        Fruit.find(params[:fruit_id])
-                      ), 
-                      flash: { errors: @contributor.errors.full_messages } 
-                    }
-      success.html { redirect_to conversation_fruit_path(
-                        Conversation.find(params[:conversation_id]), 
-                        Fruit.find(params[:fruit_id])
-                      ) 
-                    }
+      failure.html { redirect_to @conversation, flash: { errors: @contributor.errors.full_messages } }
+      success.html { redirect_to @conversation }
     end
+  end
+
+  def update
+    @contributor = Contributor.find(params[:id])
+    @contributor.update_attributes(contributor_params)
+    
+    respond_with_bip(@contributor)
   end
 
   protected
@@ -24,6 +24,15 @@ class ContributorsController < InheritedResources::Base
     end
 
     def permitted_params
-      params.permit(contributor: [:fruit_id, :name, :rank, :observations])
+      params.permit(:id, :conversation_id, contributor: [:conversation_id, :name, :rank, :observations])
+    end
+
+    def contributor_params
+      params.require(:contributor).permit(:name, :rank, :observations)
+    end
+
+  private
+    def set_conversation
+      @conversation = Conversation.find(params[:conversation_id])
     end
 end

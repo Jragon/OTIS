@@ -1,11 +1,20 @@
 class ThreatsController < InheritedResources::Base
-  actions :create
+  before_action :set_conversation
+  respond_to :json, only: :update
+  actions :create, :update
 
   def create
     create! do |success, failure|
-      failure.html { redirect_to conversation_fruit_path(Conversation.find(params[:conversation_id]), Fruit.find(params[:fruit_id])), flash: { errors: @threat.errors.full_messages } }
-      success.html { redirect_to conversation_fruit_path(Conversation.find(params[:conversation_id]), Fruit.find(params[:fruit_id])) }
+      failure.html { redirect_to @conversation, flash: { errors: @threat.errors.full_messages } }
+      success.html { redirect_to @conversation }
     end
+  end
+
+  def update
+    @threat = Threat.find(params[:id])
+    @threat.update_attributes(threat_params)
+    
+    respond_with_bip(@threat)
   end
 
   protected
@@ -15,6 +24,15 @@ class ThreatsController < InheritedResources::Base
     end
 
     def permitted_params
-      params.permit(threat: [:fruit_id, :name, :rank, :observations])
+      params.permit(:id, threat: [:conversation_id, :name, :rank, :observations])
+    end
+
+    def threat_params
+      params.require(:threat).permit(:name, :rank, :observations)
+    end
+
+  private
+    def set_conversation
+      @conversation = Conversation.find(params[:conversation_id])
     end
 end

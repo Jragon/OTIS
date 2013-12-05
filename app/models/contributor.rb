@@ -1,6 +1,6 @@
 class Contributor < ActiveRecord::Base
-  belongs_to :fruit
+  belongs_to :conversation
 
-  validates :fruit_id, :name, :rank, presence: true
-  validates :name, :rank, uniqueness: { scope: :fruit_id } 
+  validates :conversation_id, :name, :rank, presence: true
+  validates :name, :rank, uniqueness: { scope: :conversation_id } 
 end
