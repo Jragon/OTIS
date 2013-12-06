@@ -33,6 +33,10 @@ class ContributorsController < InheritedResources::Base
 
   private
     def set_conversation
-      @conversation = Conversation.find(params[:conversation_id])
+      if params[:conversation_id]
+        @conversation = Conversation.find(params[:conversation_id])
+      else
+        @conversation = Contributor.find(params[:id]).conversation
+      end
     end
 end

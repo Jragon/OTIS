@@ -18,7 +18,7 @@
       <th></th> 
     </tr>
   </thead>
-  <tbody id="fruit" data-update-url="<%= sort_conversation_fruits_url @conversation %>">
+  <tbody id="fruit" class="sortable" data-update-url="<%= sort_conversation_fruits_url @conversation %>">
     <% @conversation.fruit.order(:rank).each do |fruit| %>
       <%= content_tag_for :tr, fruit do %>
         <td class="handle">[reorder]</td>
@@ -51,20 +51,22 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Rank</th>
       <th>Name</th>
       <th>Description</th>
       <th></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="contributors" class="sortable" data-update-url="<%= sort_conversation_contributors_url @conversation %>">
     <% @conversation.contributors.order(:rank).each do |contributor| %>
-      <tr>
+      <%= content_tag_for :tr, contributor do %>
+        <td class="handle">[reorder]</td>
         <td><%= @last_rank = contributor.rank %></td>
         <td><%= best_in_place contributor, :name, path: [@conversation, contributor] %></td>
         <td><%= best_in_place contributor, :observations, as: :text_box, path: [@conversation, contributor] %></td>
         <td><%= contributor.observations %></td>
-      </tr>
+      <% end %>
     <% end %>
     <%= simple_form_for [@conversation, @conversation.contributors.new], html: { class: 'form-inline' } do |f| %>
       <tr>
@@ -84,19 +86,21 @@
 <table>
   <thead>
     <tr>
+      <th></th>
       <th>Rank</th>
       <th>Name</th>
       <th>Description</th>
       <th></th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="threats" class="sortable" data-update-url="<%= sort_conversation_threats_url @conversation %>">
     <% @conversation.threats.order(:rank).each do |threat| %>
-      <tr>
+      <%= content_tag_for :tr, threat do %>
+        <td class="handle">[reorder]</td>
         <td><%= @last_rank = threat.rank %></td>
         <td><%= best_in_place threat, :name, path: [@conversation, threat] %></td>
         <td><%= best_in_place threat, :observations, as: :text_box, path: [@conversation, threat] %>
-      </tr>
+      <% end %>
     <% end %>
     <%= simple_form_for [@conversation, @conversation.threats.new], html: { class: 'form-inline' } do |f| %>
       <tr>

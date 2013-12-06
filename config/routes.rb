@@ -10,8 +10,14 @@ OTIS::Application.routes.draw do
     resources :fruits do
       post :sort, on: :collection
     end
-    resources :threats
-    resources :contributors
+
+    resources :threats do
+      post :sort, on: :collection
+    end
+
+    resources :contributors do
+      post :sort, on: :collection
+    end
   end 
 
   resources :discussions do 
