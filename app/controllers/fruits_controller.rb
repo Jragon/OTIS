@@ -4,7 +4,7 @@ class FruitsController < InheritedResources::Base
 
   def create
     create! do |success, failure|
-      failure.html { redirect_to @conversatoin }
+      failure.html { redirect_to @conversation }
       success.html { redirect_to @conversation }
     end
   end
@@ -38,6 +38,8 @@ class FruitsController < InheritedResources::Base
     def set_conversation
       if params[:conversation_id]
         @conversation = Conversation.find(params[:conversation_id])
+      else
+        @conversation = Fruit.find(params[:id]).conversation
       end
     end
 
