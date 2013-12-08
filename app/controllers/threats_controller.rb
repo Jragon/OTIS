@@ -1,7 +1,7 @@
 class ThreatsController < InheritedResources::Base
   before_action :set_conversation
   respond_to :json, only: :update
-  actions :create, :update
+  actions :create, :update, :destroy
 
   def create
     create! do |success, failure|
@@ -15,6 +15,10 @@ class ThreatsController < InheritedResources::Base
     @threat.update_attributes(threat_params)
     
     respond_with_bip(@threat)
+  end
+
+  def destroy
+    destroy! { @conversation }
   end
 
   protected

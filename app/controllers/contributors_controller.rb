@@ -1,7 +1,7 @@
 class ContributorsController < InheritedResources::Base
   before_action :set_conversation
   respond_to :json, only: :update
-  actions :create, :update
+  actions :create, :update, :destroy
 
   def create
     create! do |success, failure|
@@ -15,6 +15,10 @@ class ContributorsController < InheritedResources::Base
     @contributor.update_attributes(contributor_params)
     
     respond_with_bip(@contributor)
+  end
+
+  def destroy
+    destroy! { @conversation }
   end
 
   protected
