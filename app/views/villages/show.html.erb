@@ -16,8 +16,7 @@
       <th>Lead Facilitator</th>
       <th>Duration</th>
       <th>Date Held</th>
-      <th>Top Change</th>
-      <th>No. Changes</th>
+      <th></th>
     </tr>
   </thead>
 
@@ -29,8 +28,6 @@
         <td><%= discussion.lead_facilitator %></td>
         <td><%= discussion.duration %> Minutes</td>
         <td><%= discussion.date_held.strftime("%m-%d-%Y") %></td>
-        <td><%= discussion.top_change.respond_to?(:name) ? discussion.top_change.name : "N/A" %></td>
-        <td><%= discussion.conversations.count %></td>
       </tr>
     <% end %>
   <%= simple_form_for @village.discussions.new do |f| %>
