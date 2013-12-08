@@ -4,7 +4,7 @@ class VillagesController < InheritedResources::Base
   def create
     create! do |success, failure|
       failure.html { redirect_to @programme, 
-                     flash: { errors: @contributor.errors.full_messages }
+                     flash: { errors: @village.errors.full_messages }
                    }
       success.html { redirect_to @programme }
     end
