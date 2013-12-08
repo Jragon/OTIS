@@ -59,6 +59,7 @@
       <th>Name</th>
       <th>Description</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody id="contributors" class="sortable" data-update-url="<%= sort_conversation_contributors_url @conversation %>">
@@ -69,6 +70,7 @@
         <td><%= best_in_place contributor, :name, path: [@conversation, contributor] %></td>
         <td><%= best_in_place contributor, :observations, as: :text_box, path: [@conversation, contributor] %></td>
         <td><%= contributor.observations %></td>
+        <td><%= link_to "Delete", conversation_contributor_path(@conversation, contributor), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       <% end %>
     <% end %>
     <%= simple_form_for [@conversation, @conversation.contributors.new], html: { class: 'form-inline' } do |f| %>
@@ -79,6 +81,7 @@
         <td><%= @last_rank + 1 %></td>
         <td><%= f.input :name, label: false, input_html: { size: 15 } %></td>
         <td><%= f.input :observations, as: :text, label: false %></td>
+        <td></td>
         <td><%= f.button :submit %></td>
       </tr>
     <% end %>
@@ -95,6 +98,7 @@
       <th>Name</th>
       <th>Description</th>
       <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody id="threats" class="sortable" data-update-url="<%= sort_conversation_threats_url @conversation %>">
@@ -104,6 +108,8 @@
         <td><%= @last_rank = threat.rank %></td>
         <td><%= best_in_place threat, :name, path: [@conversation, threat] %></td>
         <td><%= best_in_place threat, :observations, as: :text_box, path: [@conversation, threat] %>
+        <td></td>
+        <td><%= link_to "Delete", conversation_threat_path(@conversation, threat), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       <% end %>
     <% end %>
     <%= simple_form_for [@conversation, @conversation.threats.new], html: { class: 'form-inline' } do |f| %>
@@ -114,6 +120,7 @@
         <td><%= @last_rank + 1 %></td>
         <td><%= f.input :name, label: false, input_html: { size: 15 } %></td>
         <td><%= f.input :observations, as: :text, label: false %></td>
+        <td></td>
         <td><%= f.button :submit %></td>
       </tr>
     <% end %>
