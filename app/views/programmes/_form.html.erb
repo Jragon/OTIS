@@ -15,7 +15,7 @@
     <%= f.input :name, input_html: { maxlength: 20 } %>
   </div>
   <div class="field">
-    <%= f.input :number, input_html: { maxlength: 20 } %>
+    <%= f.input :number, input_html: { maxlength: 7 }, as: :string %>
   </div>
   <div class="field">
     <% if @national_office %>

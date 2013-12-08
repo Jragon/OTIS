@@ -4,7 +4,7 @@ class ConversationsController < InheritedResources::Base
 
   def create
     create! do |success, failure|
-      failure.html { redirect_to @discussion }
+      failure.html { redirect_to @discussion, flash: { errors: @conversation.errors.full_messages }}
       success.html { redirect_to @discussion }
     end
   end
@@ -18,10 +18,10 @@ class ConversationsController < InheritedResources::Base
   end
 
   def update
-    @conversatoin = Conversation.find(params[:id])
-    @conversatoin.update_attributes(params[:conversatoin])
+    @conversation = Conversation.find(params[:id])
+    @conversation.update_attributes(conversation_params)
     
-    respond_with_bip(@conversatoin)
+    respond_with_bip(@conversation)
   end
 
   def destroy
@@ -48,6 +48,10 @@ class ConversationsController < InheritedResources::Base
 
     def set_last_rank
       @last_rank = 0
+    end
+
+    def conversation_params
+      params.require(:conversation).permit(:discussion_id, :change_name, :rank, :ten_seed, :observations)
     end
 
     def permitted_params

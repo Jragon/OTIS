@@ -1,6 +1,6 @@
-<h2><%= @national_office.name %></h2>
+<h3>Programmes in <%= @national_office.name %></h3>
 
-<h5>Programmes under <%= @national_office.name %></h3>
+<h5>Select an existing programme from the list, or use the button below to start a new programme.</h5>
 <table>
   <thead>
     <tr>
@@ -23,4 +23,4 @@
   </tbody>
 </table>
 
-<%= link_to "New Programme", new_national_office_programme_path(@national_office) %>
+<%= button_to "New Programme", new_national_office_programme_path(@national_office), method: :get %>
