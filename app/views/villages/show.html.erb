@@ -7,11 +7,12 @@
 
 <h3>Group discussions in <%= @village.name %> village</h3>
 
-<h5>Enter the details for each discussion.</h5>
+<h5>Enter the details for each group discussion.</h5>
 <table>
   <thead>
     <tr>
       <th>Group</th>
+      <th>Number of Participants</th>
       <th>Lead Facilitator</th>
       <th>Duration</th>
       <th>Date Held</th>
@@ -24,6 +25,7 @@
     <% @village.discussions.each do |discussion| %>
       <tr>
         <td><%= link_to discussion.group.name, discussion %></td>
+        <td><%= discussion.participants %></td>
         <td><%= discussion.lead_facilitator %></td>
         <td><%= discussion.duration %> Minutes</td>
         <td><%= discussion.date_held.strftime("%m-%d-%Y") %></td>
@@ -35,6 +37,7 @@
     <tr>
       <%= f.input :village_id, as: :hidden, input_html: { value: @village.id } %>
       <td><%= f.text_field :group_name, required: true, data: { autocomplete_source: Group.all.map(&:name) }, label: false %></td>
+      <td><%= f.input :participants, input_html: { maxlength: 6 }, label: false %></td>
       <td><%= f.input :lead_facilitator, input_html: { maxlength: 20 }, label: false %></td>
       <td><%= f.input :duration, collection: (30..180).step(30).map {|n| "#{n} minutes" }, selected: 0, label: false %></td>
       <td><%= f.input :date_held, as: :date, label: false %></td>
