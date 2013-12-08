@@ -5,8 +5,8 @@ class ThreatsController < InheritedResources::Base
 
   def create
     create! do |success, failure|
-      failure.html { redirect_to @conversation, flash: { errors: @threat.errors.full_messages } }
-      success.html { redirect_to @conversation }
+      failure.html { redirect_to conversation_path(@conversation, anchor: "threats"), flash: { errors: @threat.errors.full_messages }, anchor: "threats" }
+      success.html { redirect_to(:back, anchor: "#threats") }
     end
   end
 

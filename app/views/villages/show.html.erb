@@ -24,7 +24,7 @@
     <% @village.discussions.each do |discussion| %>
       <tr>
         <td><%= link_to discussion.group.name, discussion %></td>
-        <td><%= discussion.participants %></td>
+        <td><%= discussion.try(:participants) %></td>
         <td><%= discussion.lead_facilitator %></td>
         <td><%= discussion.duration %> Minutes</td>
         <td><%= discussion.date_held.strftime("%m-%d-%Y") %></td>
