@@ -44,7 +44,7 @@ class FruitsController < InheritedResources::Base
     end
 
     def permitted_params
-      params.permit(:id)
+      params.permit(:id, fruit: [:id, :conversation_id, :theme_name, :name, :rank, :ten_seed, :observations])
     end
 
     def fruit_params
