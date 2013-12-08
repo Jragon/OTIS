@@ -1,8 +1,6 @@
 class Fruit < ActiveRecord::Base
   belongs_to :conversation
   belongs_to :theme
-  has_many :threats, dependent: :destroy
-  has_many :contributors, dependent: :destroy
 
   validates :conversation_id, :name, :rank, :ten_seed, presence: true
 
