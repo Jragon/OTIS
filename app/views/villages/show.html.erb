@@ -34,7 +34,7 @@
     <tr>
       <%= f.input :village_id, as: :hidden, input_html: { value: @village.id } %>
       <td><%= f.text_field :group_name, required: true, data: { autocomplete_source: Group.all.map(&:name) }, label: false %></td>
-      <td><%= f.input :participants, input_html: { maxlength: 6 }, label: false %></td>
+      <td><%= f.input :participants, input_html: { maxlength: 6 }, required: true, label: false %></td>
       <td><%= f.input :lead_facilitator, input_html: { maxlength: 20 }, label: false %></td>
       <td><%= f.input :duration, collection: (30..180).step(30).map {|n| "#{n} minutes" }, selected: 0, label: false %></td>
       <td><%= f.input :date_held, as: :date, label: false %></td>

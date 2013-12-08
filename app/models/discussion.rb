@@ -4,7 +4,7 @@ class Discussion < ActiveRecord::Base
   has_many :conversations
   has_many :changes, through: :conversations
 
-  validates :lead_facilitator, :duration, :date_held, 
+  validates :lead_facilitator, :duration, :participants, :date_held, 
             :group_id, :village_id, presence: true
 
   def top_change
