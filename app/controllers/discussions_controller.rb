@@ -23,6 +23,6 @@ class DiscussionsController < InheritedResources::Base
     end
 
     def permitted_params
-      params.permit(discussion: [:lead_facilitator, :duration, :date_held, :group_name, :village_id])
+      params.permit(discussion: [:lead_facilitator, :participants, :duration, :date_held, :group_name, :village_id])
     end
 end
