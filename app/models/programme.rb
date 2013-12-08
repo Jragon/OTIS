@@ -7,6 +7,7 @@ class Programme < ActiveRecord::Base
 
   validates :name, :number, :national_office_id, presence: true
   validates :name, :number, uniqueness: { scope: :national_office_id }
+  validates :number, length: { minimum: 5, maximum: 5 }
 
   def top_change
     changes.merge(Change.top(false)).take

@@ -1,6 +1,13 @@
 class ProgrammesController < InheritedResources::Base
   before_action :set_national_office
 
+  def create
+    create! do |success, failure|
+      failure.html { render "new" }
+      success.html { redirect_to @programme }
+    end
+  end
+
   def changes
     @changes = Programme.find(params[:id]).changes_with_score
 
