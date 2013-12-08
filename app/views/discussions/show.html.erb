@@ -6,7 +6,10 @@
 <h1>Discussion with <%= @discussion.group.name %> group in <%= @discussion.village.name %> village</h1>
 
 <p class="guidance">Enter the details for each change mentioned by the group. 
-Put the changes in ranked order, if you need to reorder click and drag the '[reorder]' handle. </p>
+Put the changes in ranked order. If you need to reorder click and drag the '[reorder]' handle.
+<br />
+<br />
+To edit any information just click on the text. </p>
 <table>
   <thead>
     <tr>
@@ -46,14 +49,4 @@ Put the changes in ranked order, if you need to reorder click and drag the '[reo
     <% end %>
   </tbody>
 </table>
-  <% if resource.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(resource.errors.count, "error") %>:</h2>
-
-      <ul>
-      <% resource.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<p class="guidance">Click the 'rank' number to add more information</p>
