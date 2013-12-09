@@ -6,6 +6,7 @@ class Discussion < ActiveRecord::Base
 
   validates :lead_facilitator, :duration, :participants, :date_held, 
             :group_id, :village_id, presence: true
+  validates :group_id, uniqueness: { scope: :village_id } 
 
   def top_change
     changes.merge(Change.top(false)).take
