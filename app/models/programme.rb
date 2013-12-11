@@ -1,6 +1,7 @@
 class Programme < ActiveRecord::Base
   belongs_to :national_office
   has_many :villages, dependent: :destroy
+  has_many :groups, through: :villages
   has_many :discussions, through: :villages
   has_many :conversations, through: :discussions
   has_many :changes, through: :villages

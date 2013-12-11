@@ -4,6 +4,7 @@ class Village < ActiveRecord::Base
   belongs_to :programme
   has_many :discussions, dependent: :destroy
   has_many :conversations, through: :discussions
+  has_many :groups, through: :discussions
   has_many :changes, through: :conversations
 
   validates :name, :programme_id, presence: true

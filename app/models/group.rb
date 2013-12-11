@@ -6,4 +6,12 @@ class Group < ActiveRecord::Base
   has_many :changes, through: :conversations
 
   validates :name, presence: true, uniqueness: true
+
+  def top_change
+    changes.merge(Change.top(false)).take
+  end
+
+  def changes_with_score
+    changes.merge Change.with_ten_seed.top
+  end
 end

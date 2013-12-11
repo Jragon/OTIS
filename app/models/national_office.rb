@@ -1,6 +1,7 @@
 class NationalOffice < ActiveRecord::Base
   belongs_to :regional_office
   has_many :programmes, dependent: :destroy
+  has_many :groups, through: :programmes
   has_many :changes, through: :programmes
 
   validates :name, :regional_office_id, presence: true
