@@ -22,14 +22,10 @@
   <tbody>
     <% @programme.villages.each do |village| %>
       <tr>
-        <td>
-          <%= link_to village do %>
-            <%= best_in_place village, :name, type: :input, activator: "#name-#{village.id}-activator" %>
-          <% end %>
-        </td>
+        <td><%= best_in_place village, :name, type: :input %></td>
         <td><%= village.discussions.count %></td>
         <td><%= village.top_change.try(:name) or "N/A" %></td>
-        <td id="name-<%= village.id %>-activator">[edit]</td>
+        <td><%= button_to "Go!", village, method: :get %></td>
       </tr>
     <% end %>
     <%= simple_form_for [@programme, @programme.villages.new] do |f| %>
@@ -44,4 +40,4 @@
   </tbody>
 </table>
 
-<p class="guidance">Click on the village name to add more information.</p>
+<p class="guidance">Click the 'Go!' button to add more information.</p>

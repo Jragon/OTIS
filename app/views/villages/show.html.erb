@@ -3,7 +3,7 @@
 
   <%= link_to @village.programme.name, @village.programme %> /
 
-<%= link_to @village.name, @village %>
+  <%= link_to @village.name, @village %>
 </header>
 <hr />
 
@@ -30,17 +30,18 @@ Then click 'Create Group' to add more information</p>
   <tbody id="discussions">
     <% @village.discussions.each do |discussion| %>
       <tr>
-        <td><%= link_to discussion.group.name, discussion %></td>
-        <td><%= discussion.try(:participants) %></td>
-        <td><%= discussion.lead_facilitator %></td>
-        <td><%= discussion.duration %> Minutes</td>
+        <td><%= best_in_place discussion, :group_name, type: :input, inner_class: 'discussion_group_name', data: { autocomplete: true } %></td>
+        <td><%= best_in_place discussion, :participants, type: :input %></td>
+        <td><%= best_in_place discussion, :lead_facilitator, type: :input %></td>
+        <td><%= best_in_place discussion, :duration, type: :select, collection: (30..180).step(30).map {|n| [n, "#{n} Minutes"] } %></td>
         <td><%= discussion.date_held.strftime("%m-%d-%Y") %></td>
+        <td><%= button_to "Go!", discussion, method: :get %></td>
       </tr>
     <% end %>
   <%= simple_form_for @village.discussions.new do |f| %>
     <tr>
       <%= f.input :village_id, as: :hidden, input_html: { value: @village.id } %>
-      <td><%= f.text_field :group_name, required: true, data: { autocomplete_source: Group.all.map(&:name) }, label: false %></td>
+      <td><%= f.text_field :group_name, required: true, data: { autocomplete_source: Group.all.map(&:name) }, label: false, class: 'discussion_group_name' %></td>
       <td><%= f.input :participants, input_html: { maxlength: 6 }, required: true, label: false %></td>
       <td><%= f.input :lead_facilitator, input_html: { maxlength: 20 }, label: false %></td>
       <td><%= f.input :duration, collection: (30..180).step(30).map {|n| "#{n} minutes" }, selected: 0, label: false %></td>
