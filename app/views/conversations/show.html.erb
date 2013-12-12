@@ -62,7 +62,6 @@ When you have finished entering all the information for this change, use the nav
       <th>Name</th>
       <th>Description</th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
   <tbody id="contributors" class="sortable" data-update-url="<%= sort_conversation_contributors_url @conversation %>">
@@ -83,7 +82,6 @@ When you have finished entering all the information for this change, use the nav
         <td><%= @last_rank + 1 %></td>
         <td><%= f.input :name, label: false, input_html: { size: 15 } %></td>
         <td><%= f.input :observations, as: :text, label: false %></td>
-        <td></td>
         <td><%= f.button :submit %></td>
       </tr>
     <% end %>
@@ -99,7 +97,6 @@ When you have finished entering all the information for this change, use the nav
       <th>Rank</th>
       <th>Name</th>
       <th>Description</th>
-      <th></th>
       <th></th>
     </tr>
   </thead>
@@ -122,7 +119,6 @@ When you have finished entering all the information for this change, use the nav
         <td><%= @last_rank + 1 %></td>
         <td><%= f.input :name, label: false, input_html: { size: 15 } %></td>
         <td><%= f.input :observations, as: :text, label: false %></td>
-        <td></td>
         <td><%= f.button :submit %></td>
       </tr>
     <% end %>

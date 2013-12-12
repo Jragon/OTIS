@@ -1,5 +1,5 @@
 class Contributor < ActiveRecord::Base
-  acts_as_list
+  acts_as_list column: :rank, scope: :conversation
 
   belongs_to :conversation
 
