@@ -26,6 +26,7 @@
         <td><%= village.discussions.count %></td>
         <td><%= village.top_change.try(:name) or "N/A" %></td>
         <td><%= button_to "Go!", village, method: :get %></td>
+        <td><%= button_to "Delete", village, method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       </tr>
     <% end %>
     <%= simple_form_for [@programme, @programme.villages.new] do |f| %>
