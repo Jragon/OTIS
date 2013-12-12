@@ -1,4 +1,5 @@
 class VillagesController < InheritedResources::Base
+  respond_to :json, only: :update
   before_action :set_programme
 
   def create
@@ -14,6 +15,13 @@ class VillagesController < InheritedResources::Base
     @changes = Village.find(params[:id]).changes_with_score
 
     render 'changes/index'
+  end
+
+  def update
+    @village = Village.find(params[:id])
+    @village.update_attributes(village_params)
+    
+    respond_with_bip(@village)
   end
 
   protected
@@ -34,5 +42,9 @@ class VillagesController < InheritedResources::Base
 
     def permitted_params
       params.permit(village: [:name, :programme_id])
+    end
+    
+   def village_params
+      params.require(:village).permit(:name)
     end
 end
