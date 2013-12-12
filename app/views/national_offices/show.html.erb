@@ -1,3 +1,10 @@
+<header> 
+  <%= link_to 'Home', root_path %> /
+
+  <%= link_to @national_office.regional_office.name, @national_office.regional_office %> /
+
+  <%= link_to @national_office.name, @national_office %>
+</header>
 <h3>Programmes in <%= @national_office.name %></h3>
 
 <p class="guidance">Select an existing programme from the list, or use the button below to start a new programme.</p>

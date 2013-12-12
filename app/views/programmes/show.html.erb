@@ -1,7 +1,11 @@
 <header> 
   <%= link_to 'Home', root_path %> /
 
-  <%= link_to 'Programmes', programmes_path %>
+  <%= link_to @programme.national_office.regional_office.name, @programme.national_office.regional_office %> /
+
+  <%= link_to @programme.national_office.name, @programme.national_office %> /
+
+  <%= link_to @programme.name, @programme %>
 </header>
 <hr />
 <h2><%= @programme.name %></h2>

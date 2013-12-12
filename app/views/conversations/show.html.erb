@@ -1,13 +1,17 @@
 <header> 
   <%= link_to 'Home', root_path %> /
 
+  <%= link_to @discussion.village.programme.national_office.regional_office.name, @discussion.village.programme.national_office.regional_office %> /
+
+  <%= link_to @discussion.village.programme.national_office.name, @discussion.village.programme.national_office %> /
+
   <%= link_to @discussion.village.programme.name, @discussion.village.programme %> /
 
-<%= link_to @discussion.village.name,  programme_village_path(@discussion.village.programme, @discussion.village) %> /
+  <%= link_to @discussion.village.name,  programme_village_path(@discussion.village.programme, @discussion.village) %> /
 
-<%= link_to @discussion.group.name, @discussion %> /
+  <%= link_to @discussion.group.name, @discussion %> /
 
-<%= link_to @conversation.change.name, discussion_conversation_path(@dicussion, @conversation) %>
+  <%= link_to @conversation.change.name, discussion_conversation_path(@discussion, @conversation) %>
 </header>
 <hr />
 

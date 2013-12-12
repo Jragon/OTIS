@@ -1,3 +1,8 @@
+<header> 
+  <%= link_to 'Home', root_path %> /
+
+  <%= link_to @regional_office.name, @regional_office %>
+</header>
 <h2><%= @regional_office.name %></h2>
 
 <h3>National Offices in <%= @regional_office.name %></h3>
