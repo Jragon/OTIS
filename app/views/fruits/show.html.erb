@@ -1,5 +1,15 @@
-<header>
-  <%= link_to @conversation.discussion.village.programme.name, @conversation.discussion.village.programme %> / <%= link_to @conversation.discussion.village.name, @village %> / <%= link_to @conversation.discussion.group.name, @discussion %> / <%= link_to @conversation.change.name, discussion_conversation_path(@conversation.discussion, @conversation) %> / <%= link_to @fruit.name, conversation_fruit_path(@conversation, @fruit) %>
+<header> 
+  <%= link_to 'Home', root_path %> /
+
+  <%= link_to @conversation.discussion.village.programme.name, @conversation.discussion.village.programme %> /
+
+<%= link_to @conversation.discussion.village.name, @village %> /
+
+<%= link_to @conversation.discussion.group.name, @discussion %> /
+
+<%= link_to @conversation.change.name, discussion_conversation_path(@conversation.discussion, @conversation) %> /
+
+<%= link_to @fruit.name, conversation_fruit_path(@conversation, @fruit) %>
 </header>
 <hr />
 

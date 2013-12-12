@@ -1,5 +1,9 @@
-<header>
-  <%= link_to @village.programme.name, @village.programme %> / <%= link_to @village.name, @village %>
+<header> 
+  <%= link_to 'Home', root_path %> /
+
+  <%= link_to @village.programme.name, @village.programme %> /
+
+<%= link_to @village.name, @village %>
 </header>
 <hr />
 
@@ -23,7 +27,7 @@ Then click 'Create Group' to add more information</p>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody id="discussions">
     <% @village.discussions.each do |discussion| %>
       <tr>
         <td><%= link_to discussion.group.name, discussion %></td>
