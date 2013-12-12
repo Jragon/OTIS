@@ -1,4 +1,6 @@
 class Discussion < ActiveRecord::Base
+  acts_as_list
+
   belongs_to :village
   belongs_to :group
   has_many :conversations
