@@ -1,5 +1,12 @@
 OTIS::Application.routes.draw do
   
+  get "reports/index"
+  get "reports/village/:id", to: 'reports#village'
+  get "reports/national_office"
+  get "reports/regional_office"
+  get "reports/programme"
+  get "reports/world_vision"
+
   resources :themes
 
   resources :fruits do
@@ -53,6 +60,8 @@ OTIS::Application.routes.draw do
   resources :regional_offices do
     get 'changes', on: :member
   end
+
+  root 'regional_offices#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # You can have the root of your site routed with "root"
