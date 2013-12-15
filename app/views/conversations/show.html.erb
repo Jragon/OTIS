@@ -5,7 +5,7 @@
 
   <%= link_to @discussion.village.programme.national_office.name, @discussion.village.programme.national_office %> /
 
-  <%= link_to @discussion.village.programme.name, @discussion.village.programme %> /
+  <%= link_to @discussion.village.programme.name, [@discussion.village.programme.national_office, @discussion.village.programme] %> /
 
   <%= link_to @discussion.village.name,  programme_village_path(@discussion.village.programme, @discussion.village) %> /
 

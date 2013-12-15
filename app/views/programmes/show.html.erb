@@ -5,7 +5,7 @@
 
   <%= link_to @programme.national_office.name, @programme.national_office %> /
 
-  <%= link_to @programme.name, @programme %>
+  <%= link_to @programme.name, [@national_office, @programme] %>
 </header>
 <hr />
 <h2><%= @programme.name %></h2>
