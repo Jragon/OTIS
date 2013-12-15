@@ -12,8 +12,6 @@
     <% value.each do |error| %>
       <%= content_tag(:div, error, class: "error") %>
     <% end %>
-  <% else %>
-    <%= content_tag(:div, value, class: "flash #{key}") %>
   <% end %>
 <% end %>
 <%= yield %>
