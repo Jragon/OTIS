@@ -8,10 +8,8 @@ class ProgrammesController < InheritedResources::Base
     end
   end
 
-  def changes
-    @changes = Programme.find(params[:id]).changes_with_score
-
-    render 'changes/index'
+  def destroy
+    destroy! { @national_office }
   end
 
   protected
@@ -27,6 +25,8 @@ class ProgrammesController < InheritedResources::Base
     def set_national_office
       if params[:national_office_id]
         @national_office = NationalOffice.find(params[:national_office_id])
+      elsif params[:id]
+        @national_office = Programme.find(params[:id]).national_office
       end
     end
 

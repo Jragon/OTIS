@@ -28,39 +28,30 @@ OTIS::Application.routes.draw do
   end 
 
   resources :discussions do 
-    get 'changes', on: :member
     resources :conversations do
       post :sort, on: :collection
     end
   end
 
-  resources :groups do
-    get 'changes', on: :member
-  end
+  resources :groups
 
   resources :changes
 
   resources :villages do
-    get 'changes', on: :member
     resources :discussions
   end
 
   resources :programmes, only: [:show] do
-    get 'changes', on: :member
     resources :villages
   end
 
   resources :national_offices do
-    get 'changes', on: :member
     resources :programmes do
-      get 'changes', on: :member 
       resources :villages
     end
   end
 
-  resources :regional_offices do
-    get 'changes', on: :member
-  end
+  resources :regional_offices
 
   root 'regional_offices#index'
 
