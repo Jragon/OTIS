@@ -45,7 +45,7 @@ OTIS::Application.routes.draw do
     resources :discussions
   end
 
-  resources :programmes do
+  resources :programmes, only: [] do
     get 'changes', on: :member
     resources :villages
   end
