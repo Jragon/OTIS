@@ -7,7 +7,7 @@ class VillagesController < InheritedResources::Base
       failure.html { redirect_to @programme, 
                      flash: { errors: @village.errors.full_messages }
                    }
-      success.html { redirect_to @programme }
+      success.html { redirect_to [@programme.national_office, @programme] }
     end
   end
 
@@ -24,6 +24,10 @@ class VillagesController < InheritedResources::Base
     respond_with_bip(@village)
   end
 
+  def destroy
+    destroy! { [@programme.national_office, @programme] }
+  end
+
   protected
     def collection
       if @programme
@@ -37,6 +41,8 @@ class VillagesController < InheritedResources::Base
     def set_programme
       if params[:programme_id]
         @programme = Programme.find(params[:programme_id])
+      elsif params[:id]
+        @programme = Village.find(params[:id]).programme
       end
     end
 
