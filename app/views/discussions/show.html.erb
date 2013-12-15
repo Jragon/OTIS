@@ -38,7 +38,7 @@ To edit any information just click on the text. </p>
         <td class="handle">[reorder]</td>
         <td class="rank"><%= link_to @last_rank = conversation.rank, discussion_conversation_path(@discussion, conversation) %></td>
         <td><%= best_in_place conversation, :change_name, type: :input, inner_class: 'conversation_change_name', data: { autocomplete: true } %></td>
-        <td><%= best_in_place conversation, :ten_seed, type: :select, collection: 0.upto(10).map{|i| [i, i]} %></td>
+        <td><%= best_in_place conversation, :ten_seed, type: :select, collection: 0.upto(10).map{|i| i == 0 ? [i, "N/A"] : [i, i]} %></td>
         <td><%= best_in_place conversation, :observations, type: :textarea, nil: "Click to add" %></td>
         <td><%= link_to "Delete", discussion_conversation_path(@discussion, conversation), method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       <% end %>
@@ -50,7 +50,7 @@ To edit any information just click on the text. </p>
         <%= f.input :rank, as: :hidden, input_html: { value: @last_rank + 1 } %>
         <td><%= @last_rank + 1 %></td>
         <td><%= f.text_field :change_name, required: true, data: { autocomplete_source: Change.top.map(&:name) }, class: 'conversation_change_name' %></td>
-        <td><%= f.input :ten_seed, collection: 0.upto(10), selected: 0, label: false %></td>
+        <td><%= f.input :ten_seed, collection: 0.upto(10).map{|i| i == 0 ? ["N/A", i] : [i, i]}, selected: 0, label: false %></td>
         <td><%= f.input :observations, as: :text, label: false %></td>
         <td><%= f.button :submit, value: "Add" %></td>
       </tr>
