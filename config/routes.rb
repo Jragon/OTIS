@@ -45,14 +45,15 @@ OTIS::Application.routes.draw do
     resources :discussions
   end
 
-  resources :programmes, only: [] do
+  resources :programmes, only: [:show] do
     get 'changes', on: :member
     resources :villages
   end
 
   resources :national_offices do
     get 'changes', on: :member
-    resources :programmes do 
+    resources :programmes do
+      get 'changes', on: :member 
       resources :villages
     end
   end
