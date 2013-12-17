@@ -18,7 +18,7 @@
       <th>Score</th>      
       <th>Ten Seed</th>      
     </tr>
-    <tr id="village">
+    <tr id="resource">
       <td><%= @resource.name %></td>
       <% @resource.changes_with_score.limit(3).each do |change| %>
         <td><%= change.name %></td>
@@ -32,7 +32,7 @@
         <% group.changes_with_score(@resource.id).limit(3).each do |change| %>
           <td><%= change.name %></td>
           <td><%= change.score %></td>
-          <td><%#= change.average_ten_seed %></td>
+          <td><%= change.average_ten_seed %></td>
         <% end %>
       </tr>
     <% end %>

@@ -16,6 +16,6 @@ class Group < ActiveRecord::Base
   # end
 
   def changes_with_score(village = false)
-    changes.merge Change.with_rank(village)    
+    changes.merge Change.with_ten_seed.top(village)    
   end
 end
