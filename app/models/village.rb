@@ -1,5 +1,5 @@
 class Village < ActiveRecord::Base
-  before_save { |village| village.name.capitalize! }
+  before_validation { |village| village.name.capitalize! }
 
   belongs_to :programme
   has_many :discussions, dependent: :destroy

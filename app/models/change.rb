@@ -1,7 +1,8 @@
 class Change < ActiveRecord::Base
-  before_save { |change| change.name.capitalize! }
+  before_validation { |change| change.name.capitalize! }
 
   has_many :conversations, dependent: :destroy
+  has_many :discussions, through: :conversations 
    
   validates :name, presence: true, uniqueness: true
 

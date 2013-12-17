@@ -1,5 +1,5 @@
 class Group < ActiveRecord::Base
-  before_save { |group| group.name.capitalize! }
+  before_validation { |group| group.name.capitalize! }
 
   has_many :discussions, dependent: :destroy
   has_many :conversations, through: :discussions
@@ -11,7 +11,11 @@ class Group < ActiveRecord::Base
     changes.merge(Change.top(false)).take
   end
 
-  def changes_with_score
-    changes.merge Change.with_ten_seed.top
+  # def changes_with_score_and_ten_seed(village)
+  #   changes.merge Change.with_ten_seed.top
+  # end
+
+  def changes_with_score(village = false)
+    changes.merge Change.with_rank(village)    
   end
 end

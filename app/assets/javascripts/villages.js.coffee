@@ -3,5 +3,11 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery ->
+  $('.best_in_place').best_in_place()
+
   $('#discussion_group_name').autocomplete
     source: $('#discussion_group_name').data('autocomplete-source')
+
+  $(".activator").click ->
+    $('.discussion_group_name').autocomplete
+      source: $('#discussion_group_name').data('autocomplete-source');

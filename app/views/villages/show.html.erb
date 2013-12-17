@@ -8,8 +8,9 @@
   <%= link_to @village.programme.name, [@village.programme.national_office, @village.programme] %> /
 
   <%= link_to @village.name, @village %>
+  
+  <%= link_to "#{@village.name} Reports", village_report_path(@village), id: :report %>
 </header>
-<hr />
 
 <h1><%= @village.name %></h1>
 
