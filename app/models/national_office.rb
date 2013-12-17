@@ -7,7 +7,7 @@ class NationalOffice < ActiveRecord::Base
   validates :name, :regional_office_id, presence: true
 
   def top_change
-    changes.merge(Change.top(false)).take
+    changes.merge(Change.top()).take
   end
 
   def changes_with_score

@@ -9,7 +9,7 @@ class Discussion < ActiveRecord::Base
   validates :group_id, uniqueness: { scope: :village_id } 
 
   def top_change
-    changes.merge(Change.top(false)).take
+    changes.merge(Change.top()).take
   end
 
   def group_name

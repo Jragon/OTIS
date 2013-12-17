@@ -11,7 +11,7 @@ class Programme < ActiveRecord::Base
   validates :number, length: { minimum: 5, maximum: 5 }
 
   def top_change
-    changes.merge(Change.top(false)).take
+    changes.merge(Change.top()).take
   end
 
   def changes_with_score

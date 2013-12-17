@@ -11,7 +11,7 @@ class Village < ActiveRecord::Base
   validates :name, uniqueness: { scope: :programme_id } 
   
   def top_change
-    changes.merge(Change.top(false)).take
+    changes.merge(Change.top()).take
   end
 
   def changes_with_score

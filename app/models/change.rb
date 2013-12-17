@@ -3,28 +3,25 @@ class Change < ActiveRecord::Base
 
   has_many :conversations, dependent: :destroy
   has_many :discussions, through: :conversations 
+  has_many :groups, through: :discussions
    
   validates :name, presence: true, uniqueness: true
 
 
    
-  def self.top_ranked(load_conversation=true)
+  def self.top_ranked(options = {})
     top.limit(1).first
   end
 
-  def self.top(load_conversation=true)
-    with_rank(load_conversation).order("score desc")
+  def self.top(options = {})
+    with_rank(options).order("score desc")
   end
 
-  def self.with_rank(load_conversation=true)
-    q = select("changes.*, ROUND((AVG(11 - conversations.rank) + COUNT(conversations.id)), 1) as score").group("changes.id")
-    q = q.joins(:conversations) if load_conversation
-    return q
+  def self.with_rank(options = {})
+    select("changes.*, ROUND((AVG(11 - conversations.rank) + COUNT(conversations.id)), 1) as score").group(options[:group_by] ? options[:group_by] : "changes.id").joins(:conversations)
   end
 
-  def self.with_ten_seed(load_conversation=true)
-    q = select("changes.*, ROUND(AVG(conversations.ten_seed), 1) as average_ten_seed").group("changes.id")
-    q = q.joins(:conversations) if load_conversation
-    return q
+  def self.with_ten_seed(options = {})
+    select("changes.*, ROUND(AVG(conversations.ten_seed), 1) as average_ten_seed").group("changes.id").joins(:conversations)
   end
 end
