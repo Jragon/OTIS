@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20131212172353) do
 
   create_table "contributors", force: true do |t|
     t.string   "name"
-    t.integer  "rank",            limit: 255
+    t.integer  "rank"
     t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 20131212172353) do
 
   create_table "threats", force: true do |t|
     t.string   "name"
-    t.integer  "rank",            limit: 255
+    t.integer  "rank"
     t.text     "observations"
     t.datetime "created_at"
     t.datetime "updated_at"
