@@ -12,4 +12,8 @@ class RegionalOffice < ActiveRecord::Base
   def changes_with_score
     changes.merge Change.with_ten_seed.top
   end  
+
+  def groups_with_score
+    changes.select("changes.*, ROUND(AVG(conversations.ten_seed), 1) as average_ten_seed").group("changes.id").joins(:conversations).joins(:groups).group("groups.id")
+  end
 end

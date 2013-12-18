@@ -11,11 +11,7 @@ class Group < ActiveRecord::Base
     changes.merge(Change.top()).take
   end
 
-  # def changes_with_score_and_ten_seed(village)
-  #   changes.merge Change.with_ten_seed.top
-  # end
-
-  def changes_with_score
-    changes.merge Change.with_ten_seed.with_rank(group_by: "groups.name").joins(:groups)    
-  end
+   def changes_with_score
+    changes.merge Change.with_ten_seed.top
+  end  
 end
