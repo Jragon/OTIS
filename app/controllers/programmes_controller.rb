@@ -1,5 +1,6 @@
 class ProgrammesController < InheritedResources::Base
   before_action :set_national_office
+  respond_to :json, only: :update
 
   def create
     create! do |success, failure|
@@ -10,6 +11,13 @@ class ProgrammesController < InheritedResources::Base
 
   def destroy
     destroy! { @national_office }
+  end
+
+  def update
+    @programme = Programme.find(params[:id])
+    @programme.update_attributes(programme_params)
+    
+    respond_with_bip(@programme)
   end
 
   protected
@@ -32,5 +40,9 @@ class ProgrammesController < InheritedResources::Base
 
     def permitted_params
       params.permit(programme: [:name, :number, :national_office_id])
+    end
+
+    def programme_params
+      params.require(:programme).permit(:name, :number)
     end
 end

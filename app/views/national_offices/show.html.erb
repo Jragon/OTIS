@@ -22,10 +22,11 @@
   <tbody>
     <% @national_office.programmes.each do |programme| %>
       <tr>
-        <td><%= link_to programme.name, [@national_office, programme] %></td>
-        <td><%= programme.number %></td>
+        <td><%= best_in_place programme, :name, type: :input %></td>
+        <td><%= best_in_place programme, :number, type: :input %></td>
         <td><%= programme.villages.count %></td>
         <td><%= programme.top_change.try(:name) %></td>
+        <td><%= button_to "Go!", programme, method: :get %>
         <td><%= button_to "Delete", [@national_office, programme], method: :delete, data: { confirm: 'Are you certain you want to delete this?' } %></td>
       </tr>
     <% end %>

@@ -41,7 +41,7 @@ OTIS::Application.routes.draw do
     resources :discussions
   end
 
-  resources :programmes, only: [:show] do
+  resources :programmes, only: [:show, :update] do
     resources :villages
   end
 
