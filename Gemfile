@@ -50,6 +50,9 @@ group :development, :test do
   gem 'shoulda-matchers'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 gem 'simple_form'

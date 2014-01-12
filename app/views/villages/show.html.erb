@@ -47,7 +47,9 @@ Put each group on a new line.</p>
   <%= simple_form_for @village.discussions.new do |f| %>
     <tr>
       <%= f.input :village_id, as: :hidden, input_html: { value: @village.id } %>
-      <td><%= f.input :group_name, label: false, required: true, collection: ["Girls", "Boys", "Men", "Women", "Leadership"], prompt: "Choose a group" %></td>
+      <!-- <td><%#= f.input :group_name, label: false, required: true, collection: ["Girls", "Boys", "Men", "Women", "Leadership"], prompt: "Choose a group" %></td> -->
+
+      <td><%= f.input :group_name, label: false, required: true %></td>
       <td><%= f.input :participants, input_html: { maxlength: 6 }, label: false %></td>
       <td><%= f.input :lead_facilitator, input_html: { maxlength: 20 }, label: false %></td>
       <td><%= f.input :duration, collection: (30..180).step(30).map {|n| "#{n} minutes" }, selected: 0, label: false %></td>
