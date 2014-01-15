@@ -9,7 +9,7 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Number of National Offices</th>
+      <th>Number of Programmes</th>
       <th>Top Change</th>
     </tr>
   </thead>
@@ -18,7 +18,7 @@
     <% @regional_offices.each do |regional_office| %>
       <tr>
         <td><%= link_to regional_office.name, regional_office_path(regional_office) %></th>
-        <td><%= regional_office.national_offices.count %></th>
+        <td><%= regional_office.programmes.count %></th>
         <td><%= regional_office.top_change.respond_to?(:name) ? regional_office.top_change.name : "N/A" %></th>
       </tr>
     <% end %>
