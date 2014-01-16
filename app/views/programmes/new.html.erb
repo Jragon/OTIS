@@ -1,9 +1,9 @@
 <header> 
   <%= link_to 'Home', root_path %> /
 
-  <%= link_to @programme.national_office.regional_office.name, @national_office.regional_office %> /
+  <%= link_to @national_office.regional_office.name, @national_office.regional_office %> /
 
-  <%= link_to @programme.national_office.name, @national_office %>
+  <%= link_to @national_office.name, @national_office %>
 </header>
 
 <h1>Create a New Programme <%= @national_office ? "in " + @national_office.name : "" %></h1>
