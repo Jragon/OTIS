@@ -8,8 +8,6 @@
   <%= link_to @village.programme.name, [@village.programme.national_office, @village.programme] %> /
 
   <%= link_to @village.name, @village %>
-  
-  <%= link_to "#{@village.name} Reports", village_report_path(@village), id: :report %>
 </header>
 
 <h1><%= @village.name %></h1>
@@ -20,6 +18,8 @@
 <br />
 <br />
 Put each group on a new line.</p>
+<%= button_to "#{@village.name} Reports", village_report_path(@village), method: :get %>
+<p class="guidance">To view reports for this village, click the button above.</p>
 <table>
   <thead>
     <tr>
