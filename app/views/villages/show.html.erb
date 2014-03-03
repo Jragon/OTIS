@@ -18,8 +18,10 @@
 <br />
 <br />
 Put each group on a new line.</p>
-<%= button_to "#{@village.name} Reports", village_report_path(@village), method: :get %>
+<p class="guidance">Click the 'GO' button to add more information.</p>
 <p class="guidance">To view reports for this village, click the button above.</p>
+<%= button_to "#{@village.name} Reports", village_report_path(@village), method: :get %>
+
 <table>
   <thead>
     <tr>
@@ -60,5 +62,3 @@ Put each group on a new line.</p>
   <% end %>
   </tbody>
 </table>
-
-<p class="guidance">Click the 'GO' button to add more information.</p>
