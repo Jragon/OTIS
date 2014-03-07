@@ -4,6 +4,7 @@ class Programme < ActiveRecord::Base
   has_many :groups, through: :villages
   has_many :discussions, through: :villages
   has_many :conversations, through: :discussions
+  has_many :fruit, through: :conversations
   has_many :changes, through: :villages
 
   validates :name, :number, :national_office_id, presence: true

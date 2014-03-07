@@ -1,0 +1,19 @@
+<table>
+  <thead>
+    <tr>
+      <th>Change</th>
+      <th>Fruit</th>
+      <th>Theme</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @programme.fruit.each do |fruit| %>
+      <tr>
+        <td><%= fruit.conversation.change.name %></td>
+        <td><%= fruit.name %></td>
+        <td><%= best_in_place fruit, :theme_name, type: :input, inner_class: 'fruit_theme_name', data: { autocomplete_source: fruit.conversation.themes.map(&:name) }, nil: "Click to add" %></td>
+      </tr>
+    <% end %>   
+  </tbody>
+</table>

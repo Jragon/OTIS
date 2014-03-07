@@ -4,6 +4,7 @@ class Change < ActiveRecord::Base
   has_many :conversations, dependent: :destroy
   has_many :discussions, through: :conversations 
   has_many :groups, through: :discussions
+  has_many :fruit, through: :conversations
    
   validates :name, presence: true, uniqueness: true
 
@@ -19,6 +20,10 @@ class Change < ActiveRecord::Base
 
   def self.with_rank(options = {})
     select("changes.*, ROUND((AVG(11 - conversations.rank) + COUNT(conversations.id)), 1) as score").group(options[:group_by] ? options[:group_by] : "changes.id").joins(:conversations)
+  end
+
+  def self.with_fruit_joined
+    select("changes.name")
   end
 
   def self.with_ten_seed(options = {})

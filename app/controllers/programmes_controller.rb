@@ -2,6 +2,11 @@ class ProgrammesController < InheritedResources::Base
   before_action :set_national_office
   respond_to :json, only: :update
 
+  def fruit
+    @programme = Programme.find(params[:id])
+    @fruit     = @programme.fruit
+  end
+
   def create
     create! do |success, failure|
       failure.html { render "new" }
