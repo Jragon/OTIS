@@ -1,6 +1,20 @@
-<h2>Village Report</h2>
+<header> 
+  <%= link_to 'Home', root_path %> /
 
-<h3>Village's changes</h3>
+  <%= link_to @village.programme.national_office.regional_office.name, @village.programme.national_office.regional_office %> /
+
+  <%= link_to @village.programme.national_office.name, @village.programme.national_office %> /
+
+  <%= link_to @village.programme.name, [@village.programme.national_office, @village.programme] %> /
+
+  <%= link_to @village.name, @village %>
+</header>
+
+<p class="guidance">To go back to the village click the link above</p>
+
+<h2><%= @village.name %> Report</h2>
+
+<h3><%= @village.name %>'s changes</h3>
 <%= render 'changes' %>
 
 <h3>Group Changes</h3>
