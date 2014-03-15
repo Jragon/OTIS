@@ -43,7 +43,7 @@ OTIS::Application.routes.draw do
 
   resources :programmes, only: [:show, :update] do
     resources :villages
-    get "fruit", as: :programme_fruit, on: :member
+    get "fruit", as: :fruit, on: :member
   end
 
   resources :national_offices do
