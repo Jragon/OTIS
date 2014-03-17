@@ -11,6 +11,10 @@ class ReportsController < ApplicationController
   end
 
   def national_office
+    @national_office = NationalOffice.find(params[:id])
+    @changes = @national_office.changes_with_score
+
+    @resource = @national_office
   end
 
   def regional_office
@@ -28,5 +32,8 @@ class ReportsController < ApplicationController
   end
 
   def world_vision
+    @changes     = Change.top.with_ten_seed
+    @top_changes = Change.top.with_ten_seed.limit(3)
+    @groups      = Group.all
   end
 end

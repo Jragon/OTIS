@@ -1,7 +1,15 @@
-<h2>Region Report</h2>
+<header> 
+  <%= link_to 'Home', root_path %> /
 
-<h3>Region's changes</h3>
+  <%= link_to @regional_office.name, @regional_office %>
+</header>
+
+
+<h2><%= @regional_office.name %> Report</h2>
+
+<h3><%= @regional_office.name %>'s changes</h3>
 <%= render 'changes' %>
 
 <h3>Group Changes</h3>
 <%= render 'groups' %>
+

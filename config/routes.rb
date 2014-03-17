@@ -2,10 +2,10 @@ OTIS::Application.routes.draw do
   
   get "reports/index"
   get "reports/village/:id", as: :village_report, to: 'reports#village'
-  get "reports/national_office", as: :national_office_report
+  get "reports/national/:id", as: :national_office_report, to: 'repors#national_office'
   get "reports/region/:id", as: :regional_office_report, to: 'reports#regional_office'
   get "reports/programme/:id", as: :programme_report, to: 'reports#programme'
-  get "reports/world_vision", as: :world_vision_report
+  get "reports/world_vision", as: :world_vision_report, to: 'reports#world_vision'
 
   resources :themes
 

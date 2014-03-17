@@ -1,2 +1,17 @@
-<h1>Reports#national_office</h1>
-<p>Find me in app/views/reports/national_office.html.erb</p>
+<header> 
+  <%= link_to 'Home', root_path %> /
+
+  <%= link_to @national_office.regional_office.name, @national_office.regional_office %> /
+
+  <%= link_to @national_office.name, @national_office %>
+</header>
+
+
+<h2><%= @national_office.name %> Report</h2>
+
+<h3><%= @national_office.name %>'s changes</h3>
+<%= render 'changes' %>
+
+<h3>Group Changes</h3>
+<%= render 'groups' %>
+

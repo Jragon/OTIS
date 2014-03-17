@@ -27,3 +27,6 @@
     <% end %>
   </tbody>
 </table>
+
+<p class="guidance">To view reports click the buttons below</p>
+<%= button_to "#{@regional_office.name} Report", regional_office_report_path(@regional_office), method: :get %>

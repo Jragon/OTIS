@@ -10,9 +10,6 @@
 
 <h2><%= @programme.name %></h2>
 
-<p class="guidance">To view fruit for this programme, click the button below.</p>
-<%= button_to "#{@programme.name} Fruit", fruit_programme_path(@programme), method: :get %>
-
 <h3>Villages in <%= @programme.name %></h3>
 
 <p class="guidance">Enter the names of each village where a discussion is held. Put each village name on a seperate line.</p>
@@ -49,3 +46,7 @@
 </table>
 
 <p class="guidance">Click the 'Go!' button to add more information.</p>
+
+<p class="guidance">To view reports click the buttons below</p>
+<%= button_to "#{@programme.name} Fruit", fruit_programme_path(@programme), method: :get %>
+<%= button_to "#{@programme.name} Report", programme_report_path(@programme), method: :get %>

@@ -34,3 +34,6 @@
 </table>
 
 <%= button_to "Create New Programme", new_national_office_programme_path(@national_office), method: :get %>
+
+<p class="guidance">To view reports click the buttons below</p>
+<%= button_to "#{@national_office.name} Report", national_office_report_path(@national_office), method: :get %>
