@@ -4,7 +4,7 @@ OTIS::Application.routes.draw do
   get "reports/village/:id", as: :village_report, to: 'reports#village'
   get "reports/national_office", as: :national_office_report
   get "reports/region/:id", as: :regional_office_report, to: 'reports#regional_office'
-  get "reports/programme", as: :programme_report
+  get "reports/programme/:id", as: :programme_report, to: 'reports#programme'
   get "reports/world_vision", as: :world_vision_report
 
   resources :themes

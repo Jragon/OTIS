@@ -1,2 +1,7 @@
-<h1>Reports#programme</h1>
-<p>Find me in app/views/reports/programme.html.erb</p>
+<h2><%= @programme.name %> Report</h2>
+
+<h3><%= @programme.name %>'s changes</h3>
+<%= render 'changes' %>
+
+<h3>Group Changes</h3>
+<%= render 'groups' %>

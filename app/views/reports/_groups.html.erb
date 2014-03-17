@@ -26,7 +26,7 @@
         <td class="ten_seed"><%= change.average_ten_seed %></td>
       <% end %>
     </tr>
-    <% @resource.groups.each do |group| %>
+    <% @resource.groups.group("groups.id").each do |group| %>
       <tr class="group">
         <td><%= group.name %></td>
         <% group.changes_with_score.limit(3).each do |change| %>
